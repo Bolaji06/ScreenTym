@@ -344,12 +344,24 @@ ul li a:hover{
         padding: 0px;
     }
 }
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
   @media (max-width: 630px){
     .item-list{
-        width: 450px;
+        width: 480px;
     }
   }
+  @media (max-width: 630px){
+    .recommended-col2{
+        margin-top: 80px;
+    }
+    
+}
+@media (max-width: 470px){
+    .item-list{
+        width: 330px;
+    }
+}
