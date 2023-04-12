@@ -229,8 +229,8 @@ ul li a:hover{
 .rec-movie-grid{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 8px;
-    grid-row-gap: 2px;
+    grid-gap: 4px;
+    
 }
 .rec-movie-grid div img{
     width: 180px;

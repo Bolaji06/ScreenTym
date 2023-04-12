@@ -19,12 +19,16 @@ async function fetchData(){
         https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
         const data = await response.json();
         const firstNine = data.results.slice(1, 10); // Get the first nine movie items from list
-        console.log(firstNine)
-        
+       
+        const updateInitial = firstNine[0];
+        const getValue = Object.values(updateInitial)
+        console.log(getValue)
 
-      
+          heroBackDrop.src = `https://image.tmdb.org/t/p/w500/${getValue[1]}`;
+          movieTitle.textContent = getValue[5];
+          movieDate.textContent = getValue[9];
+          movieGenre.textContent = getValue[2][1];
 
-        
             firstNine.forEach((movie) => {
                 
                 const objList = Object.values(movie);
@@ -40,15 +44,7 @@ async function fetchData(){
                         heroBackDrop.src = `https://image.tmdb.org/t/p/w500${objList[1]}`
                     
                     })
-            })
-
-
-        const poster = data.results[0];
-        const {title, release_date, genre_ids, backdrop_path} = poster
-        //heroBackDrop.src = `https://image.tmdb.org/t/p/w500/${backdrop_path}`;
-        movieTitle.textContent = title;
-        movieDate.textContent = release_date;
-        movieGenre.textContent = genre_ids[0];
+            });
     }
     catch(e){
         console.log(e)
