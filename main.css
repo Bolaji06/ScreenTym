@@ -146,6 +146,9 @@ ul li a:hover{
 .remove-logo{
     display: none;
 }
+.remove-scrolling{
+    overflow-y: hidden;
+}
 
 .profile-row{
     display: flex;
