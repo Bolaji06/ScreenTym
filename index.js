@@ -21,14 +21,14 @@ let startX, scrollLeft;
 function openNav(){
     sideNav.style.width = '300px';
     main.style.marginLeft = '250px'
-    document.body.classList.add('remove-scrolling');
+    document.body.classList.add('overflow');
 
 
 }
 function closeNav(){
     sideNav.style.width = '0';
     main.style.marginLeft = '0'
-    document.body.classList.remove('remove-scrolling');
+    document.body.classList.remove('overflow')
 }
 
 menuEl.addEventListener('click', openNav);

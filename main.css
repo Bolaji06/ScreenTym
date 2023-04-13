@@ -14,7 +14,7 @@ body{
     top: 0;
     width: 100%;
     z-index: 999999;
-    background-color: white;
+    background-color: hsla(0, 0%, 100%, 0.966);
     box-shadow: 10px 0 10px rgb(192, 192, 192);
 }
 
@@ -189,7 +189,7 @@ ul li a:hover{
 }
 .recommended-col1{
     align-self: flex-start;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .movie-title{
     font-size: 3rem;
@@ -237,6 +237,9 @@ ul li a:hover{
 }
 .rec-movie-grid div img{
     width: 180px;
+}
+.sidenav{
+    display: none;
 }
 
 @media(max-width: 1060px){
@@ -307,8 +310,13 @@ ul li a:hover{
     .links{
         display: none;
     }
+    .overflow{
+        overflow: hidden;
+    }
+    
     
     .sidenav{
+        display: block;
         height: 100%;
         width: 0;
         position: fixed;
