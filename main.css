@@ -297,6 +297,9 @@ ul li a:hover{
     .item-list{
         width: 600px;
     }
+    .overflow{
+        overflow: hidden;
+    }
     
 }
 @media(max-width: 700px){
@@ -310,9 +313,7 @@ ul li a:hover{
     .links{
         display: none;
     }
-    .overflow{
-        overflow: hidden;
-    }
+  
     
     
     .sidenav{
