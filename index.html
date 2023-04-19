@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="popular.css">
 </head>
 <body>
     <nav class="primary-navigation">
@@ -54,14 +60,14 @@
                         <div class="rec-movie-details profile-row">
                             <p class="rec-details-year">2023</p> |
                             <p class="rec-details-genre">Action</p> |
-                            <p class="rec-details-duration">2hr 55mins</p>
+                            <p class="popularity">2hr 55mins</p>
                         </div>
 
                         <button class="btn-rec-watch-now btn-doger">watch now</button>
 
                     </div>
                     <div class="recommended-col2">
-                        <p class="rec-col2-title">Today's Recomendation</p>
+                        <p class="rec-col2-title">Today's Top Rated Movies</p>
                         <div class="rec-col2-movie-list item-list">
                             <div class="rec-movie-grid ">
                                 <!-- <div><img class="item" src="./images/creed2.jpg" alt=""></div>
@@ -83,8 +89,38 @@
             </div>
 
         </section>
-    
+
+        <section class="popular-movie-section">
+            <div class="popular-container">
+                <div class="popular-movie-row">
+                    <header class="popular-header">
+                        <div class="popular-header-inner">
+                            <h3 class="header-title">
+                                Popular Movies <br> to Watch Now
+                            </h3>
+                            <p class="header-subtitle">
+                                Most watched movies by days
+                            </p>
+                        </div>
+                        <div class="popular-action">
+                            <a href="" class="action-viewall">View all</a>
+                        </div>
+                    </header>
+                    <div class="popular-movie-item">
+                        <div class="movie-thumbnail-wrapper">
+                            <a href="" class="movie-link">
+                                <img src="" alt="" class="movie-thumbnail"
+                                loading="lazy">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+        </section>
+    </main>
     <script src="index.js"></script>
     <script src="data-request.js"></script>
+    <script src="popular.js"></script>
 </body>
 </html>

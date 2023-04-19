@@ -5,7 +5,8 @@
 const heroBackDrop = document.querySelector('.hero-bg');
 const movieTitle = document.querySelector('.movie-title');
 const movieDate = document.querySelector('.rec-details-year');
-const movieGenre = document.querySelector('.rec-details-genre');
+const movieGenreTxt = document.querySelector('.rec-details-genre');
+const moviePopularity = document.querySelector('.popularity');
 const gridItems = document.querySelectorAll('.item');
 
 const movieGridContainer = document.querySelector('.rec-movie-grid');
@@ -19,15 +20,20 @@ async function fetchData(){
         https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
         const data = await response.json();
         const firstNine = data.results.slice(1, 10); // Get the first nine movie items from list
+        //console.log(firstNine)
        
+        // Update the UI With the first movie item
         const updateInitial = firstNine[0];
         const getValue = Object.values(updateInitial)
-        console.log(getValue)
+        //console.log(getValue)
 
           heroBackDrop.src = `https://image.tmdb.org/t/p/w500/${getValue[1]}`;
           movieTitle.textContent = getValue[5];
           movieDate.textContent = getValue[9];
-          movieGenre.textContent = getValue[2][1];
+          const initialGenre = getValue[2][0];
+          movieGenreTxt.textContent = getGenre(initialGenre);
+          moviePopularity.textContent = getValue[7];
+          
 
             firstNine.forEach((movie) => {
                 
@@ -40,11 +46,16 @@ async function fetchData(){
                     movieGridContainer.appendChild(imgEl)
 
                     imgEl.addEventListener('click', ()=>{
+                        const movieGenre = objList[2][0];
+                        movieGenreTxt.textContent = getGenre(movieGenre)
+                        
                         recMovieTitle.textContent = objList[5];
+                        moviePopularity.textContent = objList[7];
                         heroBackDrop.src = `https://image.tmdb.org/t/p/w500${objList[1]}`
                     
                     })
             });
+            
     }
     catch(e){
         console.log(e)
@@ -52,6 +63,25 @@ async function fetchData(){
 }
 fetchData()
 
-// fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-//     .then(response => response.json())
-//     .then(data => data)
+function getGenre(genreId){
+      fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+            .then(response => response.json())
+            .then(data =>{
+                const getValues = Object.values(data);
+
+                getValues.forEach(value =>{
+                    for (let item of value){
+                        if (item.id === genreId){
+                            movieGenreTxt.textContent = item.name
+                            return item.name
+                        }
+                    }
+                })
+            });         
+}
+
+        
+
+       
+
+        
