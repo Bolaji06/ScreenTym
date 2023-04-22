@@ -1,6 +1,9 @@
+//import { getGenre } from "./utils/genre"; 
 
 // API KEY --> b6d2f70b74eb483aeb5bb0ee43a82e53
 // URL --> https://api.themoviedb.org/3/movie/550?api_key=b6d2f70b74eb483aeb5bb0ee43a82e53
+
+
 
 const heroBackDrop = document.querySelector('.hero-bg');
 const movieTitle = document.querySelector('.movie-title');
@@ -31,7 +34,7 @@ async function fetchData(){
           movieTitle.textContent = getValue[5];
           movieDate.textContent = getValue[9];
           const initialGenre = getValue[2][0];
-          movieGenreTxt.textContent = getGenre(initialGenre);
+          getGenre(initialGenre, movieGenreTxt);
           moviePopularity.textContent = getValue[7];
           
 
@@ -47,7 +50,8 @@ async function fetchData(){
 
                     imgEl.addEventListener('click', ()=>{
                         const movieGenre = objList[2][0];
-                        movieGenreTxt.textContent = getGenre(movieGenre)
+                        //movieGenreTxt.textContent = getGenre(movieGenre)
+                        getGenre(movieGenre, movieGenreTxt)
                         
                         recMovieTitle.textContent = objList[5];
                         moviePopularity.textContent = objList[7];
@@ -63,22 +67,24 @@ async function fetchData(){
 }
 fetchData()
 
-function getGenre(genreId){
-      fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-            .then(response => response.json())
-            .then(data =>{
-                const getValues = Object.values(data);
+function getGenre(genreId, textEl){
+    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+          .then(response => response.json())
+          .then(data =>{
+              const getValues = Object.values(data);
 
-                getValues.forEach(value =>{
-                    for (let item of value){
-                        if (item.id === genreId){
-                            movieGenreTxt.textContent = item.name
-                            return item.name
-                        }
-                    }
-                })
-            });         
+              getValues.forEach(value =>{
+                  for (let item of value){
+                      if (item.id === genreId){
+                          textEl.textContent = item.name;
+                          return item.name;
+                      }
+                  }
+              })
+          });         
 }
+
+
 
         
 

@@ -343,7 +343,9 @@ ul li a:hover{
     color: rgb(170, 169, 169);
     cursor: pointer;
 } */
-
+.item-list{
+    cursor: pointer;
+}
 
 @media(max-width: 1060px){
     .recommended-movie-wrapper{
@@ -385,6 +387,7 @@ ul li a:hover{
         white-space: nowrap;
         place-items: center;
         grid-template-columns: repeat(9, 1fr);
+        
         
     }
     .movie-title{
