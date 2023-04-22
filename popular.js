@@ -16,7 +16,7 @@ async function popularMovieList(){
         //console.log(data.results.splice(1, 12));
         const firstElevenItems = data.results.splice(1, 16);
         firstElevenItems.forEach(element => {
-           // console.log(element)
+            //console.log(element)
             const getPopItem = Object.values(element);
             //console.log(getPopItem);
 
@@ -51,7 +51,7 @@ async function popularMovieList(){
 
             const popYearText = document.createElement('p');
             popYearText.setAttribute('class', 'pop-year');
-            popYearText.textContent = movieYear;
+            popYearText.textContent = `${movieYear},`;
 
             const popGenreText = document.createElement('P');
             popGenreText.setAttribute('class', 'pop-genre');
