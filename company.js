@@ -13,7 +13,7 @@ async function getListOfCompany(){
     .then(data => {
         const {id, logos} = data;
         //console.log(`${element} => ${logos[0].file_path}`)
-        const imgToSVG = logos[0].file_path.split('.')[0].concat('.svg');
+        const imgToSVG = logos[0].file_path.split('.')[0].concat('.png');
        //cp.src = 
        const companyImgEl = document.createElement('img');
        companyImgEl.setAttribute('class', 'cp');
