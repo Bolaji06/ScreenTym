@@ -1,3 +1,4 @@
+@import url(./main.css);
 
 .popular-movie-section{
     position: relative;
@@ -13,7 +14,7 @@
 }
 
 .header-title{
-    color: white;
+    color: var(--white);
     font-size: 2rem;
     padding: 20px 0;
 }
@@ -22,25 +23,25 @@
     display: block;
     width: 100px;
     height: 1px;
-    background-color: #79797a;
+    background-color: var(--gray-4);
     margin-top: 20px;
     margin-bottom: 8px;
 }
 .header-subtitle{
     color: rgb(201, 201, 201);
-    font-size: 1.2rem;
+    font-size: var(--fs_12);
     margin-bottom: 30px;
 }
 .popular-action{
     position: relative;
     width: 100%;
-    border-top: 1px solid gray;
+    border-top: 1px solid var(--gray-4);
     padding: 10px 0;
 }
 .action-viewall{
-    font-size: .8rem;
+    font-size: var(--fs_9);
     text-transform: uppercase;
-    color: rgb(201, 201, 201);
+    color: var(--gray-1);
     text-decoration: none;
 }
 .action-viewall > span{
@@ -51,7 +52,7 @@
     position: relative;
 }
 .action-viewall:hover{
-    color: white;
+    color: var(--white);
 }
 .popular-details{
     position: absolute;
@@ -79,10 +80,10 @@
     font-size: .9rem;
 }
 .pop-movie-title{
-    color: dodgerblue;
+    color: var(--dodgerblue);
     padding: 6px 0;
     font-weight: 600px;
-    font-size: 1.1rem;
+    font-size: var(--fs_12);
 }
 @media(min-width: 1200px){
     .popular-header{
@@ -151,7 +152,7 @@
         display: block;
         height: 1px;
         width: 100%;
-        background-color: gray;
+        background-color: var(--gray-4);
         margin-bottom: 20px;
     }
     .popular-header-inner::before {
@@ -176,6 +177,9 @@
         transform: translateY(0);
         opacity: 1;
     }
+    .pop-movie-title{
+        font-size: var(--fs_1);
+    }
    
    
 }
@@ -185,5 +189,11 @@
         }
         .movie-thumbnail{
             width: 100%;
+        }
+        .header-title{
+            font-size: var(--fs_18);
+        }
+        .header-subtitle{
+            font-size: var(--fs_11);
         }
 }

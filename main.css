@@ -3,9 +3,37 @@
     margin: 0;
     padding: 0;
 }
+:root{
+    --dodgerblue: #1e90ff;
+    --white: #ffffff;
+    --white_9:hsla(0, 0%, 100%, 0.966);
+    --gray-1: rgb(192, 192, 192);
+    --gray-2: rgba(14, 13, 13, 0.452);
+    --gray-3: #3b3b3b;
+    --gray-4: #79797a;
+    --black-2: #111;
+
+
+    
+    --border_1px: 1px;
+
+    --fs_15: 1.5rem;
+    --fs_18: 1.8rem;
+    --fs_1: 1rem;
+    --fs_11: 1.1rem;
+    --fs_2: 2rem;
+    --fs_9: 0.9rem;
+    --fs_3: 3rem;
+    --fs_12: 1.2rem;
+    --fs_8: 0.8rem
+    
+    
+
+
+}
 body{
     font-family: 'Montserrat', sans-serif;
-    ackground-color: rgb(53, 52, 52);
+    
 }
   
 .primary-navigation{
@@ -14,8 +42,8 @@ body{
     top: 0;
     width: 100%;
     z-index: 999999;
-    background-color: hsla(0, 0%, 100%, 0.966);
-    box-shadow: 10px 0 10px rgb(192, 192, 192);
+    background-color: var(--white_9);
+    box-shadow: 10px 0 10px var(--gray-1);
 }
 
 .logo{
@@ -23,7 +51,7 @@ body{
     background: linear-gradient(257deg, rgb(16, 7, 197) 30%, rgba(93,83,237,1) 94%); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 1.5rem;
+    font-size: var(--fs_15);
 }
 .nav-col-1{
     display: flex;
@@ -49,8 +77,9 @@ body{
     width: 50px;
     height: 50px;
     border-style: none;
-    letter-spacing: 2px;
+    letter-spacing: var(--border_1px);
     outline: none;
+    font-size: var(--fs_1);
     border-radius: 40px;
     border: none;
     background-color: transparent;
@@ -72,7 +101,7 @@ body{
     border-radius: 50%;
     position: absolute;
     right: 0;
-    color: rgb(0, 0, 0);
+    color: var(--black-2);
     background-color: transparent;
     pointer-events: painted;
 }
@@ -80,21 +109,21 @@ body{
     display: none;
    background: transparent;
    border: none;
-   font-size: 20px;
-   color: rgb(66, 66, 66);
+   font-size: var(--fs_15);
+   color: var(--gray-3);
 }
 ul li{
     display: inline-block;
     padding: 5px 10px;
 }
 ul li a{
-    font-size: .9rem;
+    font-size: var(--fs_11);
     text-decoration: none;
-    font-weight: 600;
-    color: rgb(59, 59, 59);
+    font-weight: 500;
+    color: var(--black-2);
 }
 ul li a:hover{
-    color: #818181;
+    color: var(--gray-4);
 }
 .nav-after::after{
     content: '\f107';
@@ -115,14 +144,14 @@ ul li a:hover{
     width: 300px;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom: 1px solid rgba(59, 51, 51, 0.5);
+    border-bottom: var(--border_1px) solid rgba(59, 51, 51, 0.5);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 .movie-search-input:focus{
     width: 300px;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom: 1px solid rgba(170, 9, 9, 0.507);
+    border-bottom: var(--border_1px) solid rgba(170, 9, 9, 0.507);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 .delete{
@@ -137,7 +166,7 @@ ul li a:hover{
     display: flex;
     justify-content: center;
     width: 100%;
-    border: 1px solid gray;
+    border: var(--border_1px) solid gray;
     border-radius: 40px;
 }
 .movie-search-input.sm-size{
@@ -167,11 +196,11 @@ ul li a:hover{
 .bg-overlay{
    position: absolute;
    top: 0;
-   outline: 1px solid red;
+   outline: var(--border_1px) solid red;
    z-index: 1;
    width: 100%;
    height: 100%;
-   background-color: rgba(14, 13, 13, 0.452);
+   background-color: var(--gray-2);
 }
 .recommended-movie-wrapper{
     width: 100%;
@@ -187,14 +216,14 @@ ul li a:hover{
 .recommended-col1,
 .recommended-col2{
     z-index: 9999;
-    color: white;
+    color: var(--white);
 }
 .recommended-col1{
     align-self: flex-start;
     margin-top: 0px;
 }
 .movie-title{
-    font-size: 3rem;
+    font-size: var(--fs_3);
     font-weight: 600;
     padding: 5px 0;
     margin-bottom: 8px;
@@ -208,25 +237,17 @@ ul li a:hover{
 .popularity::after{
     content: '\f005';
     display: inline-block;
-    font-size: 1rem;
+    font-size: var(--fs_1);
     padding-left: 5px;
     font-family: 'Font Awesome 6 Free';
     text-rendering: auto;
-    color: dodgerblue;
-    /* animation: star-bounce .9s ease-in-out .10s infinite; */
+    color: var(--dodgerblue);
     -webkit-font-smoothing:antialiased;
 }
-@keyframes star-bounce{
-    0%{
-        transform: translateY(-8px);
-    }
-    100%{
-        transform: scale(1);
-    }
-}
+
 .rec-movie-details p{
     padding: 0 10px;
-    font-size: .9rem;
+    font-size: var(--fs_1);
 }
 .btn-doger{
     margin-top: 16px;
@@ -235,9 +256,9 @@ ul li a:hover{
     outline: none;
     text-transform: uppercase;
     border-radius: 5px;
-    font-size: .8rem;
-    background-color: rgb(23, 130, 238);
-    color: white;
+    font-size: var(--fs_1);
+    background-color: var(--dodgerblue);
+    color: var(--white);
     font-weight: 500;
     cursor: pointer;
     transition: all .2s ease-in-out;
@@ -246,9 +267,9 @@ ul li a:hover{
     transform: scale(1.1);
 }
 .rec-col2-title{
-    color: white;
+    color: var(--white);
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: var(--fs_12);
     margin-bottom: 10px;
 }
 .rec-movie-grid{
@@ -263,86 +284,7 @@ ul li a:hover{
 .sidenav{
     display: none;
 }
-/* .popular-inner{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-right: -12.5px;
-    margin-left: -12.5px;
-    gap: 8px;
-}
-.popular-movie-container{
-    background-color: #0e0a13;
-    padding: 30px 40px;
-    margin-top: 0;
-}
-.pop-text-1::before{
-    content: '';
-    display: block;
-    width: 100px;
-    height: 1px;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    background-color: rgb(61, 61, 61);
-}
-.pop-text-2::after{
-    content: '';
-    display: block;
-    width: 300px;
-    height: 1px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    background-color: rgb(61, 61, 61);
-}
-.pop-text-1{
-    color: white;
-    font-weight: 700;
-    max-width: 200px;
-    font-size: 1.5rem;
-    padding-bottom: 10px;
-}
-.pop-movie-title{
-    color: white;
-    font-size: .9rem;
-}
-.pop-text-2,
-.pop-year,
-.pop-genre{
-    margin-top: 10px;
-    color: rgb(170, 169, 169);
-    font-size: .9rem;
-}
-.pop-movieImg{
-    flex: 0 0 14.28%;
-    max-width: 14.28%;
-    margin-right: 5px;
-}
-.pop-genre,
-.pop-year{
-    font-size: .8rem;
-}
-.popular-item{
-    width: 100%;
-}
-.popular-col-1{
-   position: relative;
-   margin-right: 60px;
-   padding-right: 12.5px;
-   padding-left: 12.5px;
-}
-.popular-col-2{
-    max-width: 100%;
-    margin-left: 50px;
-}
 
-.btn-view-all{
-    background-color: transparent;
-    border: none;
-    outline: none;
-    margin-top: 0;
-    color: rgb(170, 169, 169);
-    cursor: pointer;
-} */
 .item-list{
     cursor: pointer;
 }
@@ -419,16 +361,10 @@ ul li a:hover{
     .menu-bar{
         display: block;
     }
-    .movie-search-input:focus{
-       
-    }
 
     .links{
         display: none;
     }
-  
-    
-    
     .sidenav{
         display: block;
         height: 100%;
@@ -437,7 +373,7 @@ ul li a:hover{
         z-index: 999999;
         top: 0;
         left: 0;
-        background-color: #111;
+        background-color: var(--black-2);
         overflow-x: hidden;
         padding-top: 60px;
         transition: .5s;
@@ -446,33 +382,37 @@ ul li a:hover{
         background-color: transparent;
         border: none;
         color: rgb(119, 119, 119);
-        font-size: 30px;
+        font-size: var(--fs_2);
         position: absolute;
         top: 10px;
-        right: 25px;margin-left: 50px;
+        right: 25px;
+        margin-left: 50px;
         font-weight: 500;
     }
     .sidenav a {
         padding: 8px 8px 8px 32px;
         text-decoration: none;
-        font-size: 22px;
+        font-size: var(--fs_15);
         color: #818181;
         display: block;
         transition: 0.3s;
      }
     .sidenav a:hover,
     .sidenav .close-btn:hover{
-        color: #f1f1f1;
+        color: var(--white);
     }
     .main{
         transition: margin-left .5s;
         padding: 0px;
     }
+    .movie-title{
+        font-size: var(--fs_2);
+    }
 }
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: var(--fs_12);}
   }
   @media (max-width: 630px){
     .item-list{

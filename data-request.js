@@ -32,10 +32,10 @@ async function fetchData(){
 
           heroBackDrop.src = `https://image.tmdb.org/t/p/w500/${getValue[1]}`;
           movieTitle.textContent = getValue[5];
-          movieDate.textContent = getValue[9];
+          movieDate.textContent = getValue[9].split('-')[0];
           const initialGenre = getValue[2][0];
           getGenre(initialGenre, movieGenreTxt);
-          moviePopularity.textContent = getValue[7];
+          moviePopularity.textContent = getValue[7].toFixed();
           
 
             firstNine.forEach((movie) => {
@@ -53,8 +53,9 @@ async function fetchData(){
                         //movieGenreTxt.textContent = getGenre(movieGenre)
                         getGenre(movieGenre, movieGenreTxt)
                         
+                        
                         recMovieTitle.textContent = objList[5];
-                        moviePopularity.textContent = objList[7];
+                        moviePopularity.textContent = objList[7].toFixed();
                         heroBackDrop.src = `https://image.tmdb.org/t/p/w500${objList[1]}`
                     
                     })
