@@ -1,4 +1,4 @@
-
+/* STYLE FOR THE LIST OF MOVIE COMPANY */
 .marquee-section{
     padding: 20px 0;
     background-color: #f5f5f5;
@@ -38,5 +38,12 @@
   @media(max-width: 600px){
     .track{
         animation: marquee 20s ease-in-out infinite alternate;
+    }
+    .marquee{
+      overflow: hidden;
+      height: calc(12px + 4rem);
+    }
+    .marquee img{
+      width: 70px;
     }
   }

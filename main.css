@@ -1,8 +1,12 @@
-*{
+*,
+*::after,
+*::before{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
+/* CUSTOM VARIABLES */
 :root{
     --dodgerblue: #1e90ff;
     --white: #ffffff;
@@ -12,9 +16,7 @@
     --gray-3: #3b3b3b;
     --gray-4: #79797a;
     --black-2: #111;
-
-
-    
+ 
     --border_1px: 1px;
 
     --fs_15: 1.5rem;
@@ -25,22 +27,25 @@
     --fs_9: 0.9rem;
     --fs_3: 3rem;
     --fs_12: 1.2rem;
-    --fs_8: 0.8rem
-    
-    
+    --fs_8: 0.8rem;
 
-
+    --fd_100: 100%;
+    
 }
 body{
-    font-family: 'Montserrat', sans-serif;
-    
+    font-family: 'Montserrat', sans-serif;   
 }
-  
+/* REUSABLE STYLES */
+.fa-center{
+    display: flex;
+    align-items: center;
+}
+  /* START OF NAVIGATION STYLES */
 .primary-navigation{
     padding: 10px 30px;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: var(--fd_100);
     z-index: 999999;
     background-color: var(--white_9);
     box-shadow: 10px 0 10px var(--gray-1);
@@ -53,15 +58,12 @@ body{
     -webkit-text-fill-color: transparent;
     font-size: var(--fs_15);
 }
+
 .nav-col-1{
-    display: flex;
-    align-items: center;
     gap: 20px;
 }
 .row{
-    display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 .menu-icon{
     width: 40px;
@@ -73,12 +75,13 @@ body{
     height: fit-content;
     
 }
-.movie-search-input{
+.movie-search-input,
+.btn-search{
     width: 50px;
     height: 50px;
     border-style: none;
-    letter-spacing: var(--border_1px);
     outline: none;
+    letter-spacing: var(--border_1px);
     font-size: var(--fs_1);
     border-radius: 40px;
     border: none;
@@ -91,22 +94,17 @@ body{
 }
 
 .btn-search{
-    width: 50px;
-    height: 50px;
-    border-style: none;
-    font-size: 16px;
+    font-size: var(--fs_12);
     font-weight: bold;
-    outline: none;
     cursor: pointer;
     border-radius: 50%;
     position: absolute;
     right: 0;
     color: var(--black-2);
-    background-color: transparent;
     pointer-events: painted;
 }
 .menu-bar{
-    display: none;
+   display: none;
    background: transparent;
    border: none;
    font-size: var(--fs_15);
@@ -134,11 +132,9 @@ ul li a:hover{
     padding: 6px;
 }
 
-
 .movie-sublist a{
     display: block;
 }
-
 
 .btn-search:focus ~ .movie-search-input{
     width: 300px;
@@ -154,10 +150,7 @@ ul li a:hover{
     border-bottom: var(--border_1px) solid rgba(170, 9, 9, 0.507);
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
-.delete{
-    width: 20px;
-    display: none;
-}
+
 .search-icon{
     width: 18px;
     margin-right: 20px;  
@@ -165,30 +158,22 @@ ul li a:hover{
 .search-wrapper.sm-size{
     display: flex;
     justify-content: center;
-    width: 100%;
+    width: var(--fd_100);
     border: var(--border_1px) solid gray;
     border-radius: 40px;
 }
-.movie-search-input.sm-size{
-    display: block;
-}
-.remove-logo{
-    display: none;
-}
+
 .remove-scrolling{
     overflow-y: hidden;
 }
+/* END OF NAVIGATION STYLES */
 
-.profile-row{
-    display: flex;
-    align-items: center;
-
-}
+/* START OF HERO STYLES (RECOMMENDED SECTION)*/
 .hero-wrapper{
     position: relative;
 }
 .hero-bg{
-    width: 100%;
+    width: var(--fd_100);
     outline: 2px solid green;
     height: 669px;
     object-fit: cover;  
@@ -198,19 +183,17 @@ ul li a:hover{
    top: 0;
    outline: var(--border_1px) solid red;
    z-index: 1;
-   width: 100%;
-   height: 100%;
+   width: var(--fd_100);
+   height: var(--fd_100);
    background-color: var(--gray-2);
 }
 .recommended-movie-wrapper{
-    width: 100%;
+    width: var(--fd_100);
     position: absolute;
     top: 30%;
 }
 .row-s-a{
-    display: flex;
     justify-content: space-evenly;
-    align-items: center;
     padding: 0 20px;
 }
 .recommended-col1,
@@ -288,7 +271,9 @@ ul li a:hover{
 .item-list{
     cursor: pointer;
 }
+/* END OF HERO STYLES (RECOMMENDED SECTION) */
 
+/* MEDIA QUERIES FOR THE NAV AND HERO SECTION */
 @media(max-width: 1060px){
     .recommended-movie-wrapper{
         top: 10%;
@@ -329,8 +314,7 @@ ul li a:hover{
         white-space: nowrap;
         place-items: center;
         grid-template-columns: repeat(9, 1fr);
-        
-        
+           
     }
     .movie-title{
         text-align: center;
@@ -367,7 +351,7 @@ ul li a:hover{
     }
     .sidenav{
         display: block;
-        height: 100%;
+        height: var(--fd_100);
         width: 0;
         position: fixed;
         z-index: 999999;
@@ -417,14 +401,12 @@ ul li a:hover{
   @media (max-width: 630px){
     .item-list{
         width: 480px;
-    }
-  }
-  @media (max-width: 630px){
+    } 
     .recommended-col2{
         margin-top: 80px;
     }
-    
-}
+  }
+ 
 @media (max-width: 470px){
     .item-list{
         width: 330px;

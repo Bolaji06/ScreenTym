@@ -14,8 +14,8 @@ async function popularMovieList(){
         https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=4`);
         const data = await response.json();
         //console.log(data.results.splice(1, 12));
-        const firstElevenItems = data.results.splice(1, 16);
-        firstElevenItems.forEach(element => {
+        const firstSixteenItems = data.results.splice(1, 16);
+        firstSixteenItems.forEach(element => {
             //console.log(element)
             const getPopItem = Object.values(element);
             //console.log(getPopItem);
@@ -25,6 +25,9 @@ async function popularMovieList(){
             const popGenre = getPopItem[2][0];
 
             const popMovieName = getPopItem[5]
+
+            const isAdult = getPopItem[0];
+
           
             const movieThumbnailWrapper = document.createElement('div');
             movieThumbnailWrapper.setAttribute('class', 'movie-thumbnail-wrapper');
@@ -57,8 +60,22 @@ async function popularMovieList(){
             popGenreText.setAttribute('class', 'pop-genre');
             popularGenre(popGenre, popGenreText);
 
-            yearGenreWrapper.appendChild(popYearText);
-            yearGenreWrapper.appendChild(popGenreText);
+            const pgWrapper = document.createElement('div');
+            pgWrapper.setAttribute('class', 'pg-wrapper');
+
+            const detailsCol1 = document.createElement('div');
+            detailsCol1.setAttribute('class', 'd-col-1');
+
+            detailsCol1.appendChild(popYearText);
+            detailsCol1.appendChild(popGenreText);
+
+            yearGenreWrapper.appendChild(detailsCol1);
+
+            if (isAdult){
+                pgWrapper.textContent = 'PG'
+                yearGenreWrapper.appendChild(pgWrapper);
+            }
+          
 
             const popMovieTitle = document.createElement('h3');
             popMovieTitle.setAttribute('class', 'pop-movie-title');

@@ -1,0 +1,19 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "package",
+  "main": "index.test.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "module",
+    "url": "no"
+  },
+  "keywords": [
+    "jjj"
+  ],
+  "author": "josh",
+  "license": "ISC"
+ 
+}
