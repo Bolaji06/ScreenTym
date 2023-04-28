@@ -1,4 +1,5 @@
 
+const API_KEY1 = 'b6d2f70b74eb483aeb5bb0ee43a82e53';
 const marqueeTrack = document.querySelector('.track');
 const cp = document.querySelector('.cp');
 
@@ -8,7 +9,7 @@ async function getListOfCompany(){
     companyId.forEach(element => {
        // console.log(element)
     
-    fetch(`https://api.themoviedb.org/3/company/${element}/images?api_key=${API_KEY}`)
+    fetch(`https://api.themoviedb.org/3/company/${element}/images?api_key=${API_KEY1}`)
     .then(response => response.json())
     .then(data => {
         const {id, logos} = data;

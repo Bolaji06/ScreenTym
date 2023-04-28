@@ -4,7 +4,7 @@
   "description": "package",
   "main": "index.test.js",
   "scripts": {
-    "test": "no"
+    "test": "jest"
   },
   "repository": {
     "type": "module",

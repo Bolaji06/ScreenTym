@@ -3,7 +3,7 @@
 // API KEY --> b6d2f70b74eb483aeb5bb0ee43a82e53
 // URL --> https://api.themoviedb.org/3/movie/550?api_key=b6d2f70b74eb483aeb5bb0ee43a82e53
 
-
+import { getGenre } from './utils/genre.js';
 
 const heroBackDrop = document.querySelector('.hero-bg');
 const movieTitle = document.querySelector('.movie-title');
@@ -14,7 +14,6 @@ const gridItems = document.querySelectorAll('.item');
 
 const movieGridContainer = document.querySelector('.rec-movie-grid');
 const recMovieTitle = document.querySelector('.movie-title')
-
 
 const API_KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53'
 async function fetchData(){
@@ -34,6 +33,7 @@ async function fetchData(){
           movieTitle.textContent = getValue[5];
           movieDate.textContent = getValue[9].split('-')[0];
           const initialGenre = getValue[2][0];
+          
           getGenre(initialGenre, movieGenreTxt);
           moviePopularity.textContent = getValue[7].toFixed();
           
@@ -42,23 +42,15 @@ async function fetchData(){
                 
                 const objList = Object.values(movie);
                 //console.log(objList);
-               
-                    const imgEl = document.createElement('img');
-                    imgEl.setAttribute('class', 'item')
-                    imgEl.src = `https://image.tmdb.org/t/p/w200/${objList[1]}`
-                    movieGridContainer.appendChild(imgEl)
 
-                    imgEl.addEventListener('click', ()=>{
-                        const movieGenre = objList[2][0];
-                        //movieGenreTxt.textContent = getGenre(movieGenre)
-                        getGenre(movieGenre, movieGenreTxt)
-                        
-                        
-                        recMovieTitle.textContent = objList[5];
-                        moviePopularity.textContent = objList[7].toFixed();
-                        heroBackDrop.src = `https://image.tmdb.org/t/p/w500${objList[1]}`
-                    
-                    })
+                const heroImg = objList[1];
+                const recMovieName = objList[5];
+                const moviePopText = objList[7].toFixed();
+                const movieGenreText = objList[2][0];
+
+                heroUI(recMovieName, moviePopText, heroImg, movieGenreText)
+               
+                  
             });
             
     }
@@ -68,21 +60,29 @@ async function fetchData(){
 }
 fetchData()
 
-function getGenre(genreId, textEl){
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-          .then(response => response.json())
-          .then(data =>{
-              const getValues = Object.values(data);
+function heroUI(movieTitleValue, moviePopValue, imgValue, genre){
+    
+    const imgEl = document.createElement('img');
+    imgEl.setAttribute('class', 'item')
+    imgEl.src = `https://image.tmdb.org/t/p/w200/${imgValue}`
+    movieGridContainer.appendChild(imgEl);
 
-              getValues.forEach(value =>{
-                  for (let item of value){
-                      if (item.id === genreId){
-                          textEl.textContent = item.name;
-                          return item.name;
-                      }
-                  }
-              })
-          });         
+    imgEl.addEventListener('click', ()=>{
+        const movieGenre = genre;
+        //movieGenreTxt.textContent = getGenre(movieGenre)
+        getGenre(movieGenre, movieGenreTxt)
+        
+        
+        recMovieTitle.textContent = movieTitleValue;
+        moviePopularity.textContent = moviePopValue;
+        heroBackDrop.src = `https://image.tmdb.org/t/p/w500${imgValue}`
+    
+    })
+
+    recMovieTitle.textContent = movieTitleValue;
+    moviePopularity.textContent = moviePopValue;
+    heroBackDrop.src = `https://image.tmdb.org/t/p/w500${imgValue}`
+
 }
 
 

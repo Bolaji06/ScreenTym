@@ -16,15 +16,12 @@ const recGrid = document.querySelector('.rec-movie-grid');
 let isDown = false;
 let startX, scrollLeft;
 
-
-
 function openNav(){
     sideNav.style.width = '300px';
     main.style.marginLeft = '250px'
     document.body.classList.add('overflow');
-
-
 }
+
 function closeNav(){
     sideNav.style.width = '0';
     main.style.marginLeft = '0'
@@ -40,40 +37,43 @@ if (window.innerWidth <= 600){
     })
 }
 
-// The recommended slider movie list
-recommendSlider.addEventListener('mousedown', (e)=>{
-    isDown = true;
-    recommendSlider.classList.add('active');
-    startX = e.pageX - recommendSlider.offsetLeft;
-    scrollLeft = recommendSlider.scrollLeft;
-});
+// The recommended sliderComponent movie list
+function sliderComponent(){
+    recommendSlider.addEventListener('mousedown', (e)=>{
+        isDown = true;
+        recommendSlider.classList.add('active');
+        startX = e.pageX - recommendSlider.offsetLeft;
+        scrollLeft = recommendSlider.scrollLeft;
+    });
 
-recommendSlider.addEventListener('mouseleave', ()=>{
-    isDown = false;
-    recommendSlider.classList.remove('active');
-});
+    recommendSlider.addEventListener('mouseleave', ()=>{
+        isDown = false;
+        recommendSlider.classList.remove('active');
+    });
 
-recommendSlider.addEventListener('mouseup', ()=>{
-    isDown = false;
-    recommendSlider.classList.remove('active')
-});
+    recommendSlider.addEventListener('mouseup', ()=>{
+        isDown = false;
+        recommendSlider.classList.remove('active')
+    });
 
-recommendSlider.addEventListener('mousemove', (e)=>{
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - recommendSlider.offsetLeft;
-    const walk = (x - startX) * 4;  // You can change the multiplied value to change slider speed
-    recommendSlider.scrollLeft = scrollLeft - walk;  
-    
-});
+    recommendSlider.addEventListener('mousemove', (e)=>{
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - recommendSlider.offsetLeft;
+        const walk = (x - startX) * 4;  // You can change the multiplied value to change slider speed
+        recommendSlider.scrollLeft = scrollLeft - walk;  
+        
+    });
 
-window.addEventListener('mousemove', (e)=>{
-    //console.log(e.pageX, e.pageY)
-})
+    window.addEventListener('mousemove', (e)=>{
+        //console.log(e.pageX, e.pageY)
+    })
 
-recGrid.addEventListener('dragstart', (e)=>{
-    e.preventDefault();
-})
-recGrid.addEventListener('drop', (e)=>{
-    e.preventDefault()
-})
+    recGrid.addEventListener('dragstart', (e)=>{
+        e.preventDefault();
+    })
+    recGrid.addEventListener('drop', (e)=>{
+        e.preventDefault()
+    })
+}
+sliderComponent();

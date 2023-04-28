@@ -6,7 +6,7 @@ const popularMovieGenre = document.querySelector('.pop-genre');
 const popularMovieTitle = document.querySelector('.pop-movie-title');
 
 const popularMovieWrapper = document.querySelector('.popular-movie-row');
-
+const API_KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53'
 
 async function popularMovieList(){
     try{

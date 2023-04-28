@@ -1,6 +1,5 @@
-const getAboutUsLink = require("./sample");
-test("Returns about-us for english language", () => {
-    expect(getAboutUsLink("en-US")).toBe("/about-us");
-    expect(getAboutUsLink("cs-CZ")).toBe("/o-nas");
+const sum = require('./sample');
 
-});
+test('add two number', ()=>{
+    expect(sum(1, 4)).toBe(5)
+})

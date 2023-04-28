@@ -15,3 +15,4 @@ export function getGenre(genreId, textEl){
               })
           });         
 }
+//export default getGenres;
