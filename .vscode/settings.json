@@ -1,6 +1,6 @@
-// {
-//     "liveServer.settings.mimeTypes": {
-//       "application/javascript": ["js", "mjs"]
-//     }
-//   }
+{
+    "liveServer.settings.mimeTypes": {
+      "application/javascript": ["js", "mjs"]
+    }
+  }
   

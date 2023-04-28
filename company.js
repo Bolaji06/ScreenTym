@@ -1,5 +1,9 @@
 
-const API_KEY1 = 'b6d2f70b74eb483aeb5bb0ee43a82e53';
+import { imageBaseUrl } from "./utils/utils.js";
+import { config } from "./config/config.js";
+
+const API_KEY = config.API_KEY;
+
 const marqueeTrack = document.querySelector('.track');
 const cp = document.querySelector('.cp');
 
@@ -9,16 +13,16 @@ async function getListOfCompany(){
     companyId.forEach(element => {
        // console.log(element)
     
-    fetch(`https://api.themoviedb.org/3/company/${element}/images?api_key=${API_KEY1}`)
+    fetch(`https://api.themoviedb.org/3/company/${element}/images?api_key=${API_KEY}`)
     .then(response => response.json())
     .then(data => {
         const {id, logos} = data;
         //console.log(`${element} => ${logos[0].file_path}`)
-        const imgToSVG = logos[0].file_path.split('.')[0].concat('.png');
+        const imgToPNG = logos[0].file_path.split('.')[0].concat('.png');
        //cp.src = 
        const companyImgEl = document.createElement('img');
        companyImgEl.setAttribute('class', 'cp');
-       companyImgEl.src = `https://image.tmdb.org/t/p/w500${imgToSVG}`;
+       companyImgEl.src = `${imageBaseUrl}${imgToPNG}`;
 
        marqueeTrack.appendChild(companyImgEl);
     });

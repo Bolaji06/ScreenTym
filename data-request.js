@@ -1,67 +1,70 @@
-//import { getGenre } from "./utils/genre"; 
 
-// API KEY --> b6d2f70b74eb483aeb5bb0ee43a82e53
-// URL --> https://api.themoviedb.org/3/movie/550?api_key=b6d2f70b74eb483aeb5bb0ee43a82e53
+import { getGenre, imageBaseUrl } from './utils/utils.js';
+import { config } from "./config/config.js";
 
-import { getGenre } from './utils/genre.js';
+const API_KEY = config.API_KEY;
 
 const heroBackDrop = document.querySelector('.hero-bg');
 const movieTitle = document.querySelector('.movie-title');
 const movieDate = document.querySelector('.rec-details-year');
 const movieGenreTxt = document.querySelector('.rec-details-genre');
 const moviePopularity = document.querySelector('.popularity');
-const gridItems = document.querySelectorAll('.item');
+//const gridItems = document.querySelectorAll('.item');
 
 const movieGridContainer = document.querySelector('.rec-movie-grid');
 const recMovieTitle = document.querySelector('.movie-title')
 
-const API_KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53'
 async function fetchData(){
     try{
         const response = await fetch(`
         https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
         const data = await response.json();
         const firstNine = data.results.slice(1, 10); // Get the first nine movie items from list
-        //console.log(firstNine)
        
         // Update the UI With the first movie item
         const updateInitial = firstNine[0];
         const getValue = Object.values(updateInitial)
-        //console.log(getValue)
 
-          heroBackDrop.src = `https://image.tmdb.org/t/p/w500/${getValue[1]}`;
-          movieTitle.textContent = getValue[5];
-          movieDate.textContent = getValue[9].split('-')[0];
-          const initialGenre = getValue[2][0];
-          
-          getGenre(initialGenre, movieGenreTxt);
-          moviePopularity.textContent = getValue[7].toFixed();
-          
+        const heroBackDropData = getValue[1];
+        const movieTitleData = getValue[5];
+        const movieYearData = getValue[9].split('-')[0];
+        const movieGenreData = getValue[2][0];
+        const moviePopularityData = getValue[7].toFixed();
+
+        updateUIOnLoad(heroBackDropData, movieTitleData, movieYearData, movieGenreData, moviePopularityData);
 
             firstNine.forEach((movie) => {
                 
                 const objList = Object.values(movie);
-                //console.log(objList);
-
+        
                 const heroImg = objList[1];
                 const recMovieName = objList[5];
                 const moviePopText = objList[7].toFixed();
                 const movieGenreText = objList[2][0];
+                const movieYear = objList[9].split('-')[0];
 
-                heroUI(recMovieName, moviePopText, heroImg, movieGenreText)
-               
-                  
-            });
-            
+               updateUIOnClick(recMovieName, moviePopText, heroImg, movieGenreText, movieYear);  
+            });     
     }
     catch(e){
         console.log(e)
     }
 }
-fetchData()
 
-function heroUI(movieTitleValue, moviePopValue, imgValue, genre){
+// Load first movie to the UI when page loads
+function updateUIOnLoad(imgValue, movieTitleValue, movieYearValue, movieGenreValue, moviePopularityValue){
+    heroBackDrop.src = `${imageBaseUrl}${imgValue}`;
+    movieTitle.textContent = movieTitleValue;
+    movieDate.textContent = movieYearValue;
+    movieGenreTxt.textContent = movieGenreValue;
+    moviePopularity.textContent = moviePopularityValue;
+    getGenre(movieGenreValue, movieGenreTxt)
     
+}
+
+// Update UI when item is clicked in the recommended slider
+function updateUIOnClick(movieTitleValue, moviePopValue, imgValue, genre, movieYearValue){
+
     const imgEl = document.createElement('img');
     imgEl.setAttribute('class', 'item')
     imgEl.src = `https://image.tmdb.org/t/p/w200/${imgValue}`
@@ -69,22 +72,16 @@ function heroUI(movieTitleValue, moviePopValue, imgValue, genre){
 
     imgEl.addEventListener('click', ()=>{
         const movieGenre = genre;
-        //movieGenreTxt.textContent = getGenre(movieGenre)
         getGenre(movieGenre, movieGenreTxt)
         
-        
+        movieDate.textContent = movieYearValue;
         recMovieTitle.textContent = movieTitleValue;
         moviePopularity.textContent = moviePopValue;
-        heroBackDrop.src = `https://image.tmdb.org/t/p/w500${imgValue}`
+        heroBackDrop.src = `${imageBaseUrl}${imgValue}`
     
-    })
-
-    recMovieTitle.textContent = movieTitleValue;
-    moviePopularity.textContent = moviePopValue;
-    heroBackDrop.src = `https://image.tmdb.org/t/p/w500${imgValue}`
-
+    });
 }
-
+fetchData();
 
 
         

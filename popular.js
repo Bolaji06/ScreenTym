@@ -1,12 +1,10 @@
+import { getGenre, imageBaseUrl } from "./utils/utils.js";
+import { config } from "./config/config.js";
 
-
-const popularMovieImg = document.querySelector('.pop-movieImg');
-const popularMovieYear = document.querySelector('.pop-year');
-const popularMovieGenre = document.querySelector('.pop-genre');
-const popularMovieTitle = document.querySelector('.pop-movie-title');
+const API_KEY = config.API_KEY;
 
 const popularMovieWrapper = document.querySelector('.popular-movie-row');
-const API_KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53'
+const movieThumbnailWrapper = document.querySelector('.movie-thumbnail-wrapper');
 
 async function popularMovieList(){
     try{
@@ -28,7 +26,8 @@ async function popularMovieList(){
 
             const isAdult = getPopItem[0];
 
-          
+        function createPopluarUICard(){
+
             const movieThumbnailWrapper = document.createElement('div');
             movieThumbnailWrapper.setAttribute('class', 'movie-thumbnail-wrapper');
 
@@ -39,7 +38,7 @@ async function popularMovieList(){
             const popImg = document.createElement('img');
             popImg.setAttribute('class', 'movie-thumbnail');
             popImg.setAttribute('loading', 'lazy');
-            popImg.src = `https://image.tmdb.org/t/p/w500${getPopItem[8]}`
+            popImg.src = `${imageBaseUrl}${getPopItem[8]}`
 
             movieLink.appendChild(popImg);
             movieThumbnailWrapper.appendChild(movieLink);
@@ -58,7 +57,7 @@ async function popularMovieList(){
 
             const popGenreText = document.createElement('P');
             popGenreText.setAttribute('class', 'pop-genre');
-            popularGenre(popGenre, popGenreText);
+            getGenre(popGenre, popGenreText);
 
             const pgWrapper = document.createElement('div');
             pgWrapper.setAttribute('class', 'pg-wrapper');
@@ -85,7 +84,8 @@ async function popularMovieList(){
             popularMovieDetails.appendChild(popMovieTitle);
 
             movieLink.appendChild(popularMovieDetails);
-
+         }
+        createPopluarUICard();
         });
 
         
@@ -93,20 +93,3 @@ async function popularMovieList(){
     catch(e){}
 }
 popularMovieList()
-
-function popularGenre(genreId, textEl){
-    fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
-    .then(response => response.json())
-    .then(data =>{
-        const getValues = Object.values(data);
-
-        getValues.forEach(value =>{
-            for (let item of value){
-                if (item.id === genreId){
-                    textEl.textContent = item.name;
-                    return item.name;
-                }
-            }
-        })
-    });   
-}
