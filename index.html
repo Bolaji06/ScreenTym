@@ -1,107 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="popular.css">
-    <link rel="stylesheet" href="marquee.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./app/styles/main.css" />
+    <link rel="stylesheet" href="./app/styles/popular.css" />
+    <link rel="stylesheet" href="./app/styles/marquee.css" />
+  </head>
+  <body>
     <nav class="primary-navigation">
-        <div class="navigation-container row fa-center">
-            <div class="nav-col-1 fa-center">
-                <button class="menu-bar"><i class="fas fa-light fa-bars-staggered"></i></button>
-                <h3 class="logo">Thriller</h3>
-            </div>
-
-            <div class="links">
-                <ul class="row fa-center">
-                    <div class="movie-list">
-                    <li><a class="nav-afer" href="#Movies">Movies</a>
-                       </li>
-                    </div>
-                    <li><a class="nav-link" href="#tv_show">TV Show</a></li>
-                    <li><a class="nav-link" href="#popular">Popular</a></li>
-                </ul>
-            </div>
-            
-            <div class="search-wrapper">
-                <button class="btn-search"> <i class="fas fa-search"></i></button>
-                <input class="movie-search-input" type="search" placeholder="Search">
-                 
-            </div>
+      <div class="navigation-container row fa-center">
+        <div class="nav-col-1 fa-center">
+          <button class="menu-bar">
+            <i class="fas fa-light fa-bars-staggered"></i>
+          </button>
+          <h3 class="logo">Thriller</h3>
         </div>
+
+        <div class="links">
+          <ul class="row fa-center">
+            <div class="movie-list">
+              <li><a class="nav-afer" href="#Movies">Movies</a></li>
+            </div>
+            <li><a class="nav-link" href="#tv_show">TV Show</a></li>
+            <li><a class="nav-link" href="#popular">Popular</a></li>
+          </ul>
+        </div>
+
+        <div class="search-wrapper">
+          <button class="btn-search"><i class="fas fa-search"></i></button>
+          <input
+            class="movie-search-input"
+            type="search"
+            placeholder="Search"
+          />
+        </div>
+      </div>
     </nav>
     <div class="sidenav">
-        <button class="close-btn"><i class="fas fa-thin fa-xmark"></i></button>
-        <a href="">Movies</a>
-        <a href="">Popular</a>
-        <a href="">TV Shows</a>
-        <a href="">Recommended</a>
+      <button class="close-btn"><i class="fas fa-thin fa-xmark"></i></button>
+      <a href="">Movies</a>
+      <a href="">Popular</a>
+      <a href="">TV Shows</a>
+      <a href="">Recommended</a>
     </div>
-    <main class="main" style="margin-top: 70px;">
-        <section class="hero-container">
-            <div class="hero-wrapper">
-                <img src="./images/creed.jpg" alt="" class="hero-bg">
-                <div class="bg-overlay">
-                </div>
-                <div class="recommended-movie-wrapper row-s-a fa-center">
-                    <div class="recommended-col1">
-                        <h1 class="movie-title">Creed |||</h1>
-                        <div class="rec-movie-details fa-center">
-                            <p class="rec-details-year">2023</p> |
-                            <p class="rec-details-genre">Action</p> |
-                            <p class="popularity">2hr 55mins</p>
-                        </div>
+    <main class="main" style="margin-top: 70px">
+      <section class="hero-container">
+        <div class="hero-wrapper">
+          <img src="./images/creed.jpg" alt="" class="hero-bg" />
+          <div class="bg-overlay"></div>
+          <div class="recommended-movie-wrapper row-s-a fa-center">
+            <div class="recommended-col1">
+              <h1 class="movie-title">Creed |||</h1>
+              <div class="rec-movie-details fa-center">
+                <p class="rec-details-year">2023</p>
+                |
+                <p class="rec-details-genre">Action</p>
+                |
+                <p class="popularity">2hr 55mins</p>
+              </div>
 
-                        <button class="btn-rec-watch-now btn-doger">watch now</button>
-
-                    </div>
-                    <div class="recommended-col2">
-                        <p class="rec-col2-title">Today's Top Rated Movies</p>
-                        <div class="rec-col2-movie-list item-list">
-                            <div class="rec-movie-grid ">
-                                <!-- 
-                                <div><img class="item"src="./images/creed2.jpg" alt=""></div> -->
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-                
+              <button class="btn-rec-watch-now btn-doger">watch now</button>
             </div>
+            <div class="recommended-col2">
+              <p class="rec-col2-title">Today's Top Rated Movies</p>
+              <div class="rec-col2-movie-list item-list">
+                <div class="rec-movie-grid">
+                  <!-- 
+                                <div><img class="item"src="./images/creed2.jpg" alt=""></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        </section>
+      <section class="popular-movie-section">
+        <div class="popular-container">
+          <div class="popular-movie-row grid-items">
+            <header class="popular-header">
+              <div class="popular-header-inner">
+                <h3 class="header-title">
+                  Popular Movies <br />
+                  to Watch Now
+                </h3>
+                <p class="header-subtitle">Most watched movies by days</p>
+              </div>
+              <div class="popular-action">
+                <a href="" class="action-viewall">View all <span>></span></a>
+              </div>
+            </header>
 
-        <section class="popular-movie-section">
-            <div class="popular-container">
-                <div class="popular-movie-row grid-items">
-                    <header class="popular-header">
-                        <div class="popular-header-inner">
-                            <h3 class="header-title">
-                                Popular Movies <br> to Watch Now
-                            </h3>
-                            <p class="header-subtitle">
-                                Most watched movies by days
-                            </p>
-                        </div>
-                        <div class="popular-action">
-                            <a href="" class="action-viewall">View all <span>></span></a>
-                        </div>
-                    </header>
-                   
-                          <!-- <div class="movie-thumbnail-wrapper">
+            <!-- <div class="movie-thumbnail-wrapper">
                                <a href="" class="movie-link">
                                  <img src="./images/creed.jpg" alt="" class="movie-thumbnail" 
                                 loading="lazy" height="300px">
@@ -118,27 +129,22 @@
                                     <h3 class="pop-movie-title">Creed 3</h3>
                                 </div>
                             </a>  
-                        </div>--> 
-                      
-                </div>
-            </div>
-             
-        </section>
+                        </div>-->
+          </div>
+        </div>
+      </section>
 
-        <section class="marquee-section">
-            <div class="marquee">
-                <div class="track">
-                   
-                </div>
-            </div>
-        </section>
+      <section class="marquee-section">
+        <div class="marquee">
+          <div class="track"></div>
+        </div>
+      </section>
 
-        <section style="padding: 40px 0;"></section>
+      <section style="padding: 40px 0"></section>
     </main>
-    <script src="index.js"></script>
-    <script type="module" src="data-request.js"></script>
-    <script type="module" src="popular.js"></script>
-    <script type="module" src="company.js"></script>
-
-</body>
+    <script src="app/script/index.js"></script>
+    <script type="module" src="app/script/data-request.js"></script>
+    <script type="module" src="app/script/popular.js"></script>
+    <script type="module" src="app/script/company.js"></script>
+  </body>
 </html>
