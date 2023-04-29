@@ -1,6 +1,8 @@
+import { config } from "../config/config.js";
 
-export const API_KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53';
 export const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'
+
+const API_KEY = config.API_KEY;
 
 export function getGenre(genreId, textEl){
     fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`)
