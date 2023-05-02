@@ -1,0 +1,141 @@
+@import url('./main.css');
+.latest-container{
+    background-color: #131722;
+    padding: 20px;
+}
+.latest-wrapper{
+    padding: 20px 10px;
+}
+.latest-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;    
+}
+.latest-movie-grid{
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: auto;
+    width: 80%;
+    
+    grid-gap: 10px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    cursor: pointer;
+}
+.latest-poster{
+    width: 200px;
+    border-radius: 5px;
+}
+.l-col1-text-row{
+    display: flex;
+    gap: 5px;
+    color: gray;
+    font-size: .8rem;
+    padding: 5px 4px;
+}
+.latest-movie-name{
+    font-size: var(--fs_1);
+    color: rgb(224, 224, 224);
+    padding: 2px 4px;
+}
+.latest-col-2{
+    margin-left: 20px;
+}
+.latest-header::before{
+    content: '';
+    display: block;
+    width: 45px;
+    height: 1px;
+    background-color: rgb(77, 77, 77);
+    margin-bottom: 20px;
+}
+.latest-header-text{
+    font-size: var(--fs_18);
+    padding: 2px 0;
+    color: whitesmoke;
+}
+.scroll-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.prv-btn,
+.next-btn{
+    width: 40px;
+    height: 40px;
+    border: 2px solid whitesmoke;
+    outline: none;
+    margin-right: 12px;
+    border-radius: 50%;
+    font-size: var(--fs_1);
+    cursor: pointer;
+    font-family: "Font Awesome 6 Free";
+    text-rendering: auto;
+    color: whitesmoke;
+    background-color: transparent;
+    -webkit-font-smoothing: antialiased;
+}
+.view-all{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8rem;
+    color: rgb(196, 193, 193);
+}
+.view-all:hover{
+    color: whitesmoke;
+}
+
+.view-all > span{
+    margin-left: 8px;
+    color: gray;
+}
+@media (max-width: 990px){
+    .latest-row{
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+    .latest-header{
+        width: 100%;
+    }
+    .latest-header::before{
+        display: none;
+    }
+    .view-all,
+    .scroll-btn{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        
+    }
+    .scroll-btn{
+        margin-right: 0;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+    .view-all > span{
+        margin-left: 10px;
+    }
+    .latest-movie-grid{
+        width: 100%;
+    }
+    .latest-movie-name{
+        font-size: .9rem;
+    }
+    
+}
+@media(max-width: 700px){
+    .latest-poster{
+        width: 120px;
+    }
+    .latest-movie-name,
+    .latest-genre{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: .8rem;
+    }
+    .latest-container,
+    .latest-wrapper{
+        padding: 12px 5px;
+    }
+}

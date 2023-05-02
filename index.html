@@ -24,9 +24,10 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./app/styles/main.css" />
-    <link rel="stylesheet" href="./app/styles/popular.css" />
-    <link rel="stylesheet" href="./app/styles/marquee.css" />
+    <link rel="stylesheet" href="app/styles/main.css" />
+    <link rel="stylesheet" href="app/styles/popular.css" />
+    <link rel="stylesheet" href="app/styles/marquee.css" />
+    <link rel="stylesheet" href="app/styles/latest.css">
   </head>
   <body>
     <nav class="primary-navigation">
@@ -84,7 +85,7 @@
               <button class="btn-rec-watch-now btn-doger">watch now</button>
             </div>
             <div class="recommended-col2">
-              <p class="rec-col2-title">Today's Top Rated Movies</p>
+              <p class="rec-col2-title">Today's Recommendation</p>
               <div class="rec-col2-movie-list item-list">
                 <div class="rec-movie-grid">
                   <!-- 
@@ -140,11 +141,42 @@
         </div>
       </section>
 
-      <section style="padding: 40px 0"></section>
+      <section class="latest-container">
+        <div class="latest-wrapper">
+          <div class="latest-row">
+          
+            <div class="latest-movie-grid latest-item">
+              <!-- <div class="latest-col-1">
+                  <img src="./images/creed.jpg" alt="" width="200px">
+                  <div class="lat-col1-text">
+                    <div class="l-col1-text-row">
+                      <p class="latest-year">2022</p>
+                      <p class="latest-genre">Action</p>
+                    </div>
+                    <h3 class="latest-movie-name">Sunflower</h3>
+                  </div>
+              </div> -->
+          
+            </div>
+            <div class="latest-col-2">
+              <header class="latest-header">
+                <h2 class="latest-header-text">Top Rated Movies</h2>
+                <div class="scroll-btn">
+                  <button class="prv-btn"><i class="fa fa-angle-left"></i></button>
+                  <button class="next-btn"><i class="fa fa-angle-right"></i></button>
+                </div>
+                <a href="#" class="view-all">View all <span><i class="fa fa-angle-right"></i></span></a>
+              </header>
+            </div>
+          </div>
+        </div>
+        
+      </section>
     </main>
     <script src="app/script/index.js"></script>
     <script type="module" src="app/script/data-request.js"></script>
     <script type="module" src="app/script/popular.js"></script>
     <script type="module" src="app/script/company.js"></script>
+    <script type="module" src="app/script/latest.js"></script>
   </body>
 </html>

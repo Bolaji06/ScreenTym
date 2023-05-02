@@ -68,7 +68,7 @@ async function popularMovieList() {
 
         yearGenreWrapper.appendChild(detailsCol1);
 
-        if (!isAdult) {
+        if (isAdult) {
           pgWrapper.textContent = "PG";
           yearGenreWrapper.appendChild(pgWrapper);
         }

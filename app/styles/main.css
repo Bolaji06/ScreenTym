@@ -175,14 +175,13 @@ ul li a:hover {
 }
 .hero-bg {
   width: var(--fd_100);
-  outline: 2px solid green;
+  outline: 4px solid #131722f7;
   height: 669px;
   object-fit: cover;
 }
 .bg-overlay {
   position: absolute;
   top: 0;
-  outline: var(--border_1px) solid red;
   z-index: 1;
   width: var(--fd_100);
   height: var(--fd_100);
