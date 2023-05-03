@@ -23,6 +23,9 @@
     scroll-behavior: smooth;
     cursor: pointer;
 }
+.latest-col-1{
+    text-decoration: none;
+}
 .latest-poster{
     width: 200px;
     border-radius: 5px;

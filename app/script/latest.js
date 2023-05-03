@@ -6,11 +6,16 @@ import { trucGenre } from "../script/utils/utils.js";
 
 const latestGrid = document.querySelector(".latest-movie-grid");
 const latestItem = document.querySelector(".latest-item");
+const prvBtn = document.querySelector('.prv-btn');
 
 const API_KEY = config.API_KEY;
-const LAT_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=15`;
+const LAT_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=20`;
 
 // The recommended sliderComponent movie list
+
+let isDown = false;
+let startX, scrollLeft;
+
 function sliderComponent() {
   latestItem.addEventListener("mousedown", (e) => {
     isDown = true;
@@ -21,12 +26,11 @@ function sliderComponent() {
 
   latestItem.addEventListener("mouseleave", () => {
     isDown = false;
-    latestItem.classList.remove("active");
   });
 
   latestItem.addEventListener("mouseup", () => {
     isDown = false;
-    latestItem.classList.remove("active");
+    
   });
 
   latestItem.addEventListener("mousemove", (e) => {
@@ -65,6 +69,7 @@ async function getLatestMovies() {
           function latestUI() {
             const latestCol1 = document.createElement("a");
             latestCol1.setAttribute("class", "latest-col-1");
+            latestCol1.setAttribute('href', '#');
 
             const latestPosterImg = document.createElement("img");
             latestPosterImg.setAttribute("class", "latest-poster");
