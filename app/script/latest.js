@@ -14,13 +14,10 @@ const LAT_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&l
 
 // The recommended sliderComponent movie list
 
-let isDownL = false;
-let startXL, scrollLeftL;
+let isDown = false;
+let startX, scrollLeft;
+let  scrollPos = 0;
 
-const gridWidth = latestItem.offsetWidth;
-//console.log(gridWidth)
-
-let currentPosition = 0;
 
 function sliderComponent() {
   latestItem.addEventListener("mousedown", (e) => {
@@ -95,11 +92,14 @@ async function getLatestMovies() {
             latestGenre.setAttribute("class", "latest-genre");
             getGenre(values[2][0], latestGenre);
             //truncateText(latestGenre);
+            
 
             const latestMovieName = document.createElement("h3");
             latestMovieName.setAttribute("class", "latest-movie-name");
             latestMovieName.textContent = values[10];
-            truncateText(latestMovieName);
+            truncateText(latestMovieName, 12, 700);
+            truncateText(latestMovieName, 20, 1200);
+
 
             latestCol1.appendChild(latestPosterImg);
             latestCol1.appendChild(latCol1Text);
@@ -118,15 +118,51 @@ async function getLatestMovies() {
     console.error(error);
   }
 }
-function truncateText(text) {
-  const maxLength = 12;
+function truncateText(text, maxLength, mediaQuery) {
+  //const maxLength = 12;
 
-  if (window.matchMedia("(max-width: 700px)").matches) {
+  if (window.matchMedia(`(max-width: ${mediaQuery}px)`).matches) {
     if (text.innerText.length > maxLength) {
       text.innerText = text.innerText.slice(0, maxLength - 3) + "...";
     }
   }
 }
+
+
+prvBtn.addEventListener('click', ()=>{
+  scrollPos -= latestGrid.offsetWidth;
+
+  latestGrid.scrollTo({
+    left: scrollPos,
+    behavior: 'smooth',
+  });
+
+  // Disable button when reaches the start
+  if (scrollPos <= 0){
+    prvBtn.disabled = true;
+  }
+  if (scrollPos < latestGrid.scrollWidth - latestGrid.offsetWidth){
+    nextBtn.disabled = false;
+  }
+});
+
+nextBtn.addEventListener('click', () =>{
+  scrollPos += latestGrid.offsetWidth;
+
+  // Scroll the content to scroll position
+  latestGrid.scrollTo({
+    left: scrollPos,
+    behavior: 'smooth',
+  })
+  // Disable the next button when reaches the start
+  if (scrollPos >= latestGrid.scrollWidth - latestGrid.offsetWidth) {
+    nextBtn.disabled = true;
+  }
+  // Enable button when content is not at start
+  if (scrollPos > 0){
+    prvBtn.disabled = false;
+  }
+})
 
 getLatestMovies();
 

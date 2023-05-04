@@ -88,7 +88,7 @@
   color: var(--dodgerblue);
   padding: 6px 0;
   font-weight: 600px;
-  font-size: var(--fs_12);
+  font-size: var(--fs_1);
 }
 .d-col-1 {
   display: flex;
