@@ -17,11 +17,14 @@
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: auto;
     width: 80%;
-    
+    scrollbar-width: none;
     grid-gap: 10px;
-    overflow: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
     cursor: pointer;
+}
+.latest-movie-grid::-webkit-scrollbar{
+    display: none;
 }
 .latest-col-1{
     text-decoration: none;

@@ -7,14 +7,20 @@ import { trucGenre } from "../script/utils/utils.js";
 const latestGrid = document.querySelector(".latest-movie-grid");
 const latestItem = document.querySelector(".latest-item");
 const prvBtn = document.querySelector('.prv-btn');
+const nextBtn = document.querySelector('.next-btn');
 
 const API_KEY = config.API_KEY;
 const LAT_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=20`;
 
 // The recommended sliderComponent movie list
 
-let isDown = false;
-let startX, scrollLeft;
+let isDownL = false;
+let startXL, scrollLeftL;
+
+const gridWidth = latestItem.offsetWidth;
+//console.log(gridWidth)
+
+let currentPosition = 0;
 
 function sliderComponent() {
   latestItem.addEventListener("mousedown", (e) => {
@@ -62,7 +68,7 @@ async function getLatestMovies() {
         const { results } = data;
         results.forEach((element) => {
           const values = Object.values(element);
-          console.log(values);
+          //console.log(values);
 
           const year = values[9].split('-')[0];
 
@@ -123,3 +129,22 @@ function truncateText(text) {
 }
 
 getLatestMovies();
+
+// function scrollNext(){
+//     if (currentPosition < latestItem.scrollWidth - gridWidth){
+//         currentPosition += gridWidth;
+//         latestItem.style.transform = `translateX(-${currentPosition}px)`;
+//        console.log(gridWidth)
+//     }
+// } 
+
+// function scrollPrev(){
+//     if (currentPosition > 0){
+//         currentPosition -= gridWidth;
+//         latestItem.style.transform = `translateX(-${currentPosition}px)`;
+//     }
+// }
+// prvBtn.addEventListener('click', scrollPrev);
+
+
+//nextBtn.addEventListener('click', scrollNext);
