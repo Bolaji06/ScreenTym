@@ -22,7 +22,7 @@ async function fetchData() {
 
     if (response.ok){
       skeleton.style.display = 'none';
-      console.log(response.ok)
+      
     }
     else {
       throw new Error('Error fetching data')
@@ -32,7 +32,7 @@ async function fetchData() {
     const firstNine = data.results.slice(1, 10); // Get the first nine movie items from list
 
     // Update the UI With the first movie item
-    //console.log(firstNine[4]);
+    
     const updateInitial = firstNine[0];
     const getValue = Object.values(updateInitial);
 

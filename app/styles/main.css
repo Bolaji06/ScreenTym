@@ -32,6 +32,7 @@
   --fd_100: 100%;
 }
 body {
+  scroll-behavior: smooth;
   font-family: "Montserrat", sans-serif;
 }
 /* REUSABLE STYLES */
@@ -164,7 +165,9 @@ ul li a:hover {
   border: var(--border_1px) solid gray;
   border-radius: 40px;
 }
-
+.overflow{
+  overflow: hidden;
+}
 .remove-scrolling {
   overflow-y: hidden;
 }
@@ -383,7 +386,7 @@ ul li a:hover {
     background-color: var(--black-2);
     overflow-x: hidden;
     padding-top: 60px;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
   }
   .close-btn {
     background-color: transparent;
@@ -414,6 +417,9 @@ ul li a:hover {
   }
   .movie-title {
     font-size: var(--fs_2);
+  }
+  .btn-doger{
+    font-size: var(--fs_9);
   }
 }
 

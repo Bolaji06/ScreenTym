@@ -18,22 +18,22 @@ let startX, scrollLeft;
 
 function openNav(){
     sideNav.style.width = '300px';
-    main.style.marginLeft = '250px'
     document.body.classList.add('overflow');
+    sideNav.classList.add('overflow');
 }
 
 function closeNav(){
     sideNav.style.width = '0';
-    main.style.marginLeft = '0'
-    document.body.classList.remove('overflow')
+    main.style.marginLeft = '0';
+    document.body.classList.remove('overflow');
 }
 
 menuEl.addEventListener('click', openNav);
-closeEl.addEventListener('click', closeNav)
+closeEl.addEventListener('click', closeNav);
 
 if (window.innerWidth <= 600){
     searchInput.addEventListener('focus', ()=>{
-        logo.classList.add('remove-logo')
+        logo.classList.add('remove-logo');
     })
 }
 
@@ -73,7 +73,7 @@ function sliderComponent(){
         e.preventDefault();
     })
     recGrid.addEventListener('drop', (e)=>{
-        e.preventDefault()
+        e.preventDefault();
     })
 }
 sliderComponent();
