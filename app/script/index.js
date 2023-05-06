@@ -27,6 +27,13 @@ function closeNav(){
     main.style.marginLeft = '0';
     document.body.classList.remove('overflow');
 }
+// Close the sideNav when body is clicked
+document.body.addEventListener('click', ()=>{
+    if (sideNav.offsetWidth == 300){
+        sideNav.style.width = '0';
+        document.body.classList.remove('overflow');
+    }
+})
 
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
@@ -77,3 +84,30 @@ function sliderComponent(){
     })
 }
 sliderComponent();
+
+// const routes = {
+//     "/": "search.html",
+// }
+
+// function loadContent(url){
+//     const contentUrl = routes[url]
+
+//     fetch(contentUrl)
+//         .then(response => response.text())
+//         .then(content =>{
+//             document.querySelector('main').innerHTML = content;
+//         })
+// }
+// //loadContent(window.location.pathname);
+// console.log(window.location.pathname);
+
+// serachWrapper.addEventListener('click', (e)=>{
+//     if (e.target.matches('a')) {
+//         e.preventDefault();
+
+//         const url = e.target.href;
+
+//         loadContent(url)
+//     }
+ 
+// })
