@@ -4,11 +4,13 @@ import { config } from "../../config/config.js";
 const API_KEY = config.API_KEY;
 
 const heroBackDrop = document.querySelector(".hero-bg");
+const bgOverlay = document.querySelector('.bg-overlay');
 const movieTitle = document.querySelector(".movie-title");
 const movieDate = document.querySelector(".rec-details-year");
 const movieGenreTxt = document.querySelector(".rec-details-genre");
 const moviePopularity = document.querySelector(".popularity");
 //const gridItems = document.querySelectorAll('.item');
+const skeleton = document.querySelector('.bg-skeleton')
 
 const movieGridContainer = document.querySelector(".rec-movie-grid");
 const recMovieTitle = document.querySelector(".movie-title");
@@ -17,10 +19,20 @@ async function fetchData() {
   try {
     const response = await fetch(`
         https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+
+    if (response.ok){
+      skeleton.style.display = 'none';
+      console.log(response.ok)
+    }
+    else {
+      throw new Error('Error fetching data')
+    }
+   
     const data = await response.json();
     const firstNine = data.results.slice(1, 10); // Get the first nine movie items from list
 
     // Update the UI With the first movie item
+    //console.log(firstNine[4]);
     const updateInitial = firstNine[0];
     const getValue = Object.values(updateInitial);
 
@@ -58,6 +70,7 @@ async function fetchData() {
     });
   } catch (e) {
     console.error(e.error);
+    heroBackDrop.style.display = 'none';
   }
 }
 

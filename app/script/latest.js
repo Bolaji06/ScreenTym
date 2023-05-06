@@ -129,6 +129,24 @@ function truncateText(text, maxLength, mediaQuery) {
 }
 
 
+
+function autoScroll(){
+  let scrollPos = 0;
+  scrollPos += latestGrid.offsetWidth;
+  if (scrollPos <= latestGrid.scrollWidth - latestGrid.offsetWidth) {
+    scrollPos = 0
+    setInterval(()=>{
+      latestGrid.scrollBy({
+        left: 300,
+        behavior: 'smooth',
+      })
+    }, 4000)
+    
+  }
+}
+autoScroll()
+
+
 prvBtn.addEventListener('click', ()=>{
   scrollPos -= latestGrid.offsetWidth;
 
