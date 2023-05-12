@@ -1,5 +1,4 @@
 
-
 const menuEl = document.querySelector('.menu-bar');
 const logo = document.querySelector('.logo');
 const serachWrapper = document.querySelector('.search-wrapper');
@@ -84,30 +83,3 @@ function sliderComponent(){
     })
 }
 sliderComponent();
-
-// const routes = {
-//     "/": "search.html",
-// }
-
-// function loadContent(url){
-//     const contentUrl = routes[url]
-
-//     fetch(contentUrl)
-//         .then(response => response.text())
-//         .then(content =>{
-//             document.querySelector('main').innerHTML = content;
-//         })
-// }
-// //loadContent(window.location.pathname);
-// console.log(window.location.pathname);
-
-// serachWrapper.addEventListener('click', (e)=>{
-//     if (e.target.matches('a')) {
-//         e.preventDefault();
-
-//         const url = e.target.href;
-
-//         loadContent(url)
-//     }
- 
-// })
