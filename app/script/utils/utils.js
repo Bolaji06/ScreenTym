@@ -13,8 +13,8 @@ export function getGenre(genreId, textEl){
               getValues.forEach(value =>{
                   for (let item of value){
                       if (item.id === genreId){
-                          textEl.textContent = item.name;
-                          return item.name;
+                           textEl.textContent = item.name || '';
+                         // return item.name || '';
                       }
                   }
               });
@@ -46,3 +46,13 @@ export function trucGenre(genreId, textEl){
               });
           });         
 }
+
+export function truncateText(text, maxLength, mediaQuery) {
+    //const maxLength = 12;
+  
+    if (window.matchMedia(`(max-width: ${mediaQuery}px)`).matches) {
+      if (text.innerText.length > maxLength) {
+        text.innerText = text.innerText.slice(0, maxLength - 3) + "...";
+      }
+    }
+  }

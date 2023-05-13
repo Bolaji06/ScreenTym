@@ -100,12 +100,12 @@ function updateUIOnClick(
   ) {
   const imgEl = document.createElement("img");
   imgEl.setAttribute("class", "item");
-  imgEl.src = `https://image.tmdb.org/t/p/w200/${imgValue}`;
+  imgEl.src = `https://image.tmdb.org/t/p/w200${imgValue}`;
   movieGridContainer.appendChild(imgEl);
 
   imgEl.addEventListener("click", () => {
     const movieGenre = genre;
-    getGenre(movieGenre, movieGenreTxt);
+   getGenre(movieGenre, movieGenreTxt);
 
     movieDate.textContent = movieYearValue;
     recMovieTitle.textContent = movieTitleValue;

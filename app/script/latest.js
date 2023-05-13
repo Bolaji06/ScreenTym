@@ -3,6 +3,7 @@ import { config } from "../../config/config.js";
 import { imageBaseUrl } from "../script/utils/utils.js";
 import { getGenre } from "../script/utils/utils.js";
 import { trucGenre } from "../script/utils/utils.js";
+import { truncateText } from "../script/utils/utils.js";
 
 const latestGrid = document.querySelector(".latest-movie-grid");
 const latestItem = document.querySelector(".latest-item");
@@ -118,15 +119,7 @@ async function getLatestMovies() {
     console.error(error);
   }
 }
-function truncateText(text, maxLength, mediaQuery) {
-  //const maxLength = 12;
 
-  if (window.matchMedia(`(max-width: ${mediaQuery}px)`).matches) {
-    if (text.innerText.length > maxLength) {
-      text.innerText = text.innerText.slice(0, maxLength - 3) + "...";
-    }
-  }
-}
 
 
 
