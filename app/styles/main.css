@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 *,
 *::after,
 *::before {
@@ -44,7 +47,7 @@ body {
 }
 /* START OF NAVIGATION STYLES */
 .primary-navigation {
-  padding: 10px 30px;
+  padding: 9px 28px;
   position: fixed;
   top: 0;
   width: var(--fd_100);

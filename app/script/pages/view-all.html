@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="/app//styles/main.css">
+    <link rel="stylesheet" href="/app//styles/viewall.css" />
+  </head>
+  <body>
+    <nav class="primary-navigation">
+      <div class="navigation-container row fa-center">
+        <div class="nav-col-1 fa-center">
+          <button class="menu-bar">
+            <i class="fas fa-light fa-bars-staggered"></i>
+          </button>
+          <h3 class="logo">Thriller</h3>
+        </div>
+
+        <div class="links">
+          <ul class="row fa-center">
+            <div class="movie-list">
+              <li><a class="nav-afer" href="#Movies">Movies</a></li>
+            </div>
+            <li><a class="nav-link" href="#tv_show">TV Show</a></li>
+            <li><a class="nav-link" href="#popular">Popular</a></li>
+          </ul>
+        </div>
+
+        <div class="search-wrapper">
+          <button class="btn-search"><i class="fas fa-search"></i></button>
+          <input
+            class="movie-search-input"
+            type="search"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+    </nav>
+    <div class="sidenav">
+      <button class="close-btn"><i class="fas fa-thin fa-xmark"></i></button>
+      <a href="">Movies</a>
+      <a href="">Popular</a>
+      <a href="">TV Shows</a>
+      <a href="" class="">Recommended</a>
+    </div>
+
+    <main style="margin-top: 69px">
+      <header class="border-b-2 border-b-slate-600 ">
+        <h2>Movies</h2>
+      </header>
+
+      <section class="sec">
+        <!-- <a href="" class="card-poster"> -->
+            <!-- <img src="../../../images/creed.jpg" alt="" class="poster-img w-25"> -->
+
+            <!-- <div class="movie-details-wrapper">
+                <div class="flex gap-1">
+                    <p>2001</p>
+                    <p>Action</p>
+                </div>
+                Movie Title
+            </div> -->
+        </a>
+      </section>
+      <section class="pagination-container">
+        <div class="movie-pagination-wrapper">
+          <div class="pagination-row">
+            <button class="previous-page">Prev Page</button>
+              <button class="page-counter"></button>
+            <button class="next-page">Next Page</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- <script src="/app/script/index.js"></script> -->
+    <script type="module" src="/app/script/pages/viewall.js"></script>
+  </body>
+</html>
