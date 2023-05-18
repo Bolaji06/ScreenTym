@@ -15,11 +15,14 @@ main{
   padding-bottom: 60px;
 }
 header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 2px solid #5a5e6d;
-  margin-top: 20px;
+  margin-top: 20px;  
 }
 header h2{
-  padding: 20px;
+  padding: 10px;
   padding-bottom: 8px;
 }
 .sec{
@@ -31,6 +34,19 @@ header h2{
   gap: 10px;
   padding: 20px 0;
   border-bottom: 2px solid #5a5e6d;
+}
+.sort-btn{
+  background: transparent;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  padding: 10px;
+  transition: all .5s ease-in-out;
+}
+.sort-btn:hover{
+  color: #81838a;
 }
 .poster-img{
   width: 150px;
@@ -69,6 +85,7 @@ header h2{
   outline: none;
   color: rgb(163, 163, 163);
   cursor: pointer;
+  transition: all .5 ease-in-out;
 }
 .previous-page.disabled{
   display: none;

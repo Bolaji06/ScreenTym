@@ -1,5 +1,5 @@
 
-import { imageBaseUrl, getGenre, truncateText } from "../utils/utils.js";
+import { imageBaseUrl, getGenre, truncateText } from "./utils/utils.js";
 
 const KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53';
 
@@ -29,6 +29,7 @@ let startX, scrollLeft;
 let pageCount = 2;
 
 pageCounterEl.textContent = pageCount;
+let arr = [];
 
 function openNav(){
     sideNav.style.width = '300px';
@@ -52,20 +53,21 @@ document.body.addEventListener('click', ()=>{
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
+
+
 if (window.innerWidth <= 600){
     searchInput.addEventListener('focus', ()=>{
         logo.classList.add('remove-logo');
     })
 }
-
 async function getData(){
     try {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=en-US&page=${pageCount}`)
              .then(response => response.json())
              .then(data => data.results.forEach(item => {
-                const dataValues = Object.values(item)
-               // console.log(dataValues);
-
+                console.log(item)
+                const dataValues = Object.values(item);
+                
                 const year = dataValues[9].split('-')[0];
                 const movieTitle = dataValues[5];
                 const genreData = dataValues[2][1];
@@ -152,5 +154,10 @@ prevPageBtn.addEventListener('click', ()=>{
         }
         
     }
-
 });
+function sortItems(items){
+    let arr = [];
+    arr.push(items)
+    const srt = arr.sort();
+    console.log(srt)
+ }
