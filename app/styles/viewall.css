@@ -119,6 +119,7 @@ header h2{
   border: none;
   outline: none;
 }
+
 @media(max-width: 525px){
   .poster-img{
     width: 120px;
