@@ -18,10 +18,10 @@ const prevPageBtn = document.querySelector('.previous-page');
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
 const pageCounterEl = document.querySelector('.page-counter');
-
 const movieList = document.querySelector('.sec');
-
 const recGrid = document.querySelector('.rec-movie-grid');
+
+const pageNoEl = document.querySelector('.page-no');
 
 let isDown = false;
 let startX, scrollLeft;
@@ -29,6 +29,7 @@ let startX, scrollLeft;
 let pageCount = 2;
 
 pageCounterEl.textContent = pageCount;
+pageNoEl.textContent = `Page (${pageCount})`; 
 let arr = [];
 
 function openNav(){
@@ -132,6 +133,7 @@ nextPageBtn.addEventListener('click', ()=>{
     movieList.innerHTML = '';
     pageCount += 1;
     pageCounterEl.textContent = pageCount;
+    pageNoEl.textContent = `Page (${pageCount})`;
     console.log(pageCount);
     prevPageBtn.classList.remove('disabled')
     getData();
@@ -142,6 +144,7 @@ prevPageBtn.addEventListener('click', ()=>{
         movieList.innerHTML = '';
         pageCount--;
         pageCounterEl.textContent = pageCount;
+        pageNoEl.textContent = `Page (${pageCount})`;
         console.log(pageCount);
         getData();
         prevPageBtn.classList.add('active');
@@ -155,9 +158,3 @@ prevPageBtn.addEventListener('click', ()=>{
         
     }
 });
-function sortItems(items){
-    let arr = [];
-    arr.push(items)
-    const srt = arr.sort();
-    console.log(srt)
- }
