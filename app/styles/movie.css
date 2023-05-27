@@ -30,7 +30,7 @@ body{
     color: white;
     padding: 0 0px;
 }
-.movie-row p > span{
+.movie-row > span{
     color: rgb(101, 104, 104);
     padding: 10px;
     font-weight: 700;
@@ -63,6 +63,11 @@ body{
     color: white;
     font-weight: 500;
 }
+.alike-d-row{
+    display: flex;
+    gap: 5px;
+    color: rgb(143, 143, 143);
+}
 footer{
     position: relative;
     bottom: 0;
@@ -72,6 +77,9 @@ footer{
     padding: 20px 0;
     text-align: center;
 
+}
+.adult{
+    text-decoration: none;
 }
 .f-text{
     color: white;
@@ -89,15 +97,24 @@ footer{
 .alike-movie-card{
    flex: 0 0 48.33%;
    max-width: 48.33%;
+   text-decoration: none;
 }
 .alike-image{
     width: 100%;
+}
+.alike-genre{
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .alike-movie-title{
     max-width: 110px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: white;
+    font-size: .9rem;
 }
 .movie-col2{
     padding: 0 16px;
@@ -119,6 +136,7 @@ footer{
     line-height: 2rem;
     letter-spacing: .1rem;
     max-width: 90%;
+    padding-top: 10px;
     
     
 }
@@ -171,6 +189,14 @@ footer{
     .movie-description{
         margin-top: 20px;
     }
+    .movie-details,
+    .movie-description{
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+    .alike-movie-title{
+        max-width: 180px;
+    }
 }
 @media(min-width: 1200px){
     .video-frame{
@@ -181,5 +207,13 @@ footer{
     .alike-movie-card{
         flex: 0 0 12.5%;
         max-width: 12.5%;
+    }
+    .movie-details,
+    .movie-description{
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .h-col2{
+        padding-left: 40px;
     }
 }

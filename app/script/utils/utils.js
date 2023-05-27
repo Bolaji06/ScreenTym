@@ -56,3 +56,12 @@ export function truncateText(text, maxLength, mediaQuery) {
       }
     }
   }
+
+  export function redirectToDetailsPage(image, title, year, genre, overview, id, votesAvg, totalVotes){
+    window.location.href = `movie.html?image=${encodeURIComponent(image)}
+    &title=${encodeURIComponent(title)} &year=${encodeURIComponent(year)}
+    &genre=${encodeURIComponent(genre)} &overview=${encodeURIComponent(overview)} &id=${encodeURIComponent(id)}
+    &vote_average=${encodeURIComponent(votesAvg)} &total_votes=${encodeURIComponent(totalVotes)}`;
+  
+  }
+  

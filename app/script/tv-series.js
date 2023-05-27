@@ -27,10 +27,7 @@ async function getDataForShows(){
                         showYear: itemValues[1].split('-')[0],
                         showCountry: itemValues[6],    
                     }
-                    //console.log(objData.showGenre)
-
                    
-                    //console.log(itemValues)
                     tvShowsUI(objData, showGenre);
                    
              });
