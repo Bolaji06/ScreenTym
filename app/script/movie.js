@@ -85,7 +85,6 @@ async function getData(){
                         adultEl.textContent = 'PG';
                         adultEl.style.textDecoration = 'line-through'
                     }
-                    console.log(isAdult)
 
                     const alikeGenre = resultsValue[2][1];
                     const alikeYear = resultsValue[9].split('-')[0] || '';

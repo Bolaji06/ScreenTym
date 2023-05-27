@@ -27,9 +27,7 @@ async function popularMovieList() {
       const movieOverview = getPopItem[6];
       const movieId = getPopItem[3];
       const votesAverage = getPopItem[12];
-      const totalVotes = getPopItem[13]
-
-      console.log(movieId);
+      const totalVotes = getPopItem[13];
 
       // This function create the each popular movie UI
       function createPopluarUICard() {

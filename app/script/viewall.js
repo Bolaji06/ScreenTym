@@ -63,7 +63,7 @@ async function getData(){
                  noData.style.display = 'none';
                     pageNoEl.textContent = `Page (${pageCount})`;
                     pageCounterEl.textContent = pageCount;
-                    console.log(response.status)
+                    //console.log(response.status)
                     return response.json()
 
              })
