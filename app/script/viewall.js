@@ -1,30 +1,28 @@
 
 import { imageBaseUrl, getGenre, truncateText } from "./utils/utils.js";
+import { config } from "../../config/config.js";
 
-const KEY = 'b6d2f70b74eb483aeb5bb0ee43a82e53';
+
+const KEY = config.API_KEY;
+
 
 
 const menuEl = document.querySelector('.menu-bar');
-const logo = document.querySelector('.logo');
 const serachWrapper = document.querySelector('.search-wrapper');
 const searchInput = document.querySelector('.movie-search-input');
 const closeEl = document.querySelector('.close-btn');
-//const logo = document.querySelector('.logo')
-const recommendSlider = document.querySelector('.item-list');
 
 const nextPageBtn = document.querySelector('.next-page');
 const prevPageBtn = document.querySelector('.previous-page');
 
 const sideNav = document.querySelector('.sidenav');
-const main = document.querySelector('.main');
+const main = document.querySelector('main');
 const pageCounterEl = document.querySelector('.page-counter');
 const movieList = document.querySelector('.sec');
-const recGrid = document.querySelector('.rec-movie-grid');
+
 
 const pageNoEl = document.querySelector('.page-no');
-
-let isDown = false;
-let startX, scrollLeft;
+const noData = document.querySelector('.unavailable')
 
 let pageCount = 2;
 
@@ -54,19 +52,23 @@ document.body.addEventListener('click', ()=>{
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
-
-
-if (window.innerWidth <= 600){
-    searchInput.addEventListener('focus', ()=>{
-        logo.classList.add('remove-logo');
-    })
-}
 async function getData(){
     try {
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${KEY}&language=en-US&page=${pageCount}`)
-             .then(response => response.json())
+             .then((response) =>{
+                if (!response.ok){
+                    noData.style.display = 'block';
+                   throw new Error('Network failed')
+                }
+                 noData.style.display = 'none';
+                    pageNoEl.textContent = `Page (${pageCount})`;
+                    pageCounterEl.textContent = pageCount;
+                    console.log(response.status)
+                    return response.json()
+
+             })
              .then(data => data.results.forEach(item => {
-                console.log(item)
+                //console.log(item)
                 const dataValues = Object.values(item);
                 
                 const year = dataValues[9].split('-')[0];
@@ -110,6 +112,7 @@ function viewAllMoviesUI(objUI, genre){
     yearTxt.textContent = year.concat(',');
 
     const genreTxt = document.createElement('p');
+    genreTxt.setAttribute('class', 'all-genre')
     getGenre(genre, genreTxt);
 
     moviesRow.appendChild(yearTxt);
@@ -120,21 +123,17 @@ function viewAllMoviesUI(objUI, genre){
     const movieTxt = document.createElement('p');
     movieTxt.setAttribute('class', 'movie-list-title');
     movieTxt.textContent = movieTitle
-    truncateText(movieTxt, 14, 2000)
+    truncateText(movieTxt, 14, 2000);
 
     movieDetailsWrapper.appendChild(movieTxt);
     cardPoster.appendChild(movieDetailsWrapper);
-
 
     movieList.appendChild(cardPoster)
 }
 
 nextPageBtn.addEventListener('click', ()=>{
     movieList.innerHTML = '';
-    pageCount += 1;
-    pageCounterEl.textContent = pageCount;
-    pageNoEl.textContent = `Page (${pageCount})`;
-    console.log(pageCount);
+    pageCount++;
     prevPageBtn.classList.remove('disabled')
     getData();
 });
@@ -143,9 +142,6 @@ prevPageBtn.addEventListener('click', ()=>{
     if (pageCount >= 1){
         movieList.innerHTML = '';
         pageCount--;
-        pageCounterEl.textContent = pageCount;
-        pageNoEl.textContent = `Page (${pageCount})`;
-        console.log(pageCount);
         getData();
         prevPageBtn.classList.add('active');
 

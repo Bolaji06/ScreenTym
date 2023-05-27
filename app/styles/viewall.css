@@ -8,8 +8,12 @@
 html{
   scroll-behavior: smooth;
 }
+body{
+   background-color: #131722;
+}
 main{
-  background-color: #131722;
+  height: 100%;
+ 
   color: white;
   padding: 10px 20px;
   padding-bottom: 60px;
@@ -124,8 +128,20 @@ header h2{
   color: #d8d9db;
 }
 .page-no{
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-right: 4px;
+}
+.all-genre{
+  width: 90px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.unavailable{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 
@@ -139,11 +155,5 @@ header h2{
   }
   header h2{
     font-size: 1.2rem;
-  }
-}
-
-@media(max-width: 450px){
-  .poster-img{
-    width: 180px;
   }
 }

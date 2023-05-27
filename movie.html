@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="app/styles/main.css">
+    <link rel="stylesheet" href="app/styles/movie.css" />
+  </head>
+  <body>
+    <nav class="primary-navigation">
+      <div class="navigation-container row fa-center">
+        <div class="nav-col-1 fa-center">
+          <button class="menu-bar">
+            <i class="fas fa-light fa-bars-staggered"></i>
+          </button>
+          <h3 class="logo">Thriller</h3>
+        </div>
+
+        <div class="links">
+          <ul class="row fa-center">
+            <div class="movie-list">
+              <li><a class="nav-afer" href="#Movies">Movies</a></li>
+            </div>
+            <li><a class="nav-link" href="#tv_show">TV Show</a></li>
+            <li><a class="nav-link" href="#popular">Popular</a></li>
+          </ul>
+        </div>
+
+        <div class="search-wrapper">
+          <button class="btn-search"><i class="fas fa-search"></i></button>
+          <input
+            class="movie-search-input"
+            type="search"
+            placeholder="Search"
+          />
+        </div>
+      </div>
+    </nav>
+    <div class="sidenav">
+      <button class="close-btn"><i class="fas fa-thin fa-xmark"></i></button>
+      <a href="">Movies</a>
+      <a href="">Popular</a>
+      <a href="">TV Shows</a>
+      <a href="" class="">Recommended</a>
+    </div>
+
+    <main style="margin-top: 69px">
+        <section class="movie-col1">
+            
+            <div class="video-container">
+                <div class="video-frame">
+
+                </div>
+            </div>
+
+            <div class="movie-details">
+                <header>
+                    <h2 class="movie-s-title">Game Night</h2>
+
+                    <div class="movie-info">
+                        <div class="movie-row">
+                            <p class="year">2018<span>|</span></p>
+                            <p class="duration">56mins<span>|</span></p>
+                            <p class="genre">Action</p>
+                            
+                        </div>
+                     </div>
+                    </header>
+                        <div class="movie-vote">
+                            <span class="star"><i class="fa-solid fa-star"></i></span>
+                            <div class="vc-row">
+                                <p class="vote-avg">6.0</p>
+                                <p class="vote-count">23 votes</p>
+                            </div>
+                </div>
+            </div>
+
+            <div class="movie-description">
+                <div class="movie-poster">
+                    <img class="movie-desc-img" src="./images/creed2.jpg" alt="">
+                </div>
+                <div class="desc-details">
+                    <p class="movie-desc">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Nesciunt illo repellendus ratione amet qui ea mollitia 
+                         ipsum deleniti. Sed necessitatibus laboriosam voluptatum.
+                          Consectetur, quia? Harum sed vero quae quidem nesciunt!
+                    </p>
+                </div>
+            </div>
+
+        </section>
+        <section class="movie-col2">
+            
+                
+                    <header>
+                        <h2 class="h-col2">You may also like</h2>
+                    </header>
+
+                <div class="alike-movie-row">
+                    <!-- <a class="alike-movie-card" href="">
+                        <div class="alike-movie-image">
+                            <img class="alike-image" src="./images/cree2.jpg" alt="" srcset="">
+                        </div>
+                        <div class="alike-movie-details">
+                            <div class="alike-d-row">
+                                <p class="alike-year">2001</p>
+                                <p class="alike-genre">Action</p>
+                            </div>
+                            <h3 class="alike-movie-title">
+                                Game Night
+                            </h3>
+                        </div>
+                    </a> -->
+                 </div>
+        </section>
+       
+    </main>
+    <footer>
+      
+            <p class="f-text">Copyright &copy; 2023, Thriller. All Reserved</p>
+        
+    </footer> 
+    <script type="module" src="./app/script/movie.js"></script>
+</body>
+</html>
