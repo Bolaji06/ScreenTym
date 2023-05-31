@@ -2,7 +2,6 @@
 import { config } from "../../config/config.js";
 import { imageBaseUrl } from "../script/utils/utils.js";
 import { getGenre } from "../script/utils/utils.js";
-import { trucGenre } from "../script/utils/utils.js";
 import { truncateText } from "../script/utils/utils.js";
 
 const latestGrid = document.querySelector(".latest-movie-grid");
@@ -68,7 +67,7 @@ async function getLatestMovies() {
           const values = Object.values(element);
           //console.log(values);
 
-          const year = values[9].split('-')[0];
+          const year = values[9].split('-')[0].concat(',');
 
           function latestUI() {
             const latestCol1 = document.createElement("a");
@@ -176,22 +175,3 @@ nextBtn.addEventListener('click', () =>{
 })
 
 getLatestMovies();
-
-// function scrollNext(){
-//     if (currentPosition < latestItem.scrollWidth - gridWidth){
-//         currentPosition += gridWidth;
-//         latestItem.style.transform = `translateX(-${currentPosition}px)`;
-//        console.log(gridWidth)
-//     }
-// } 
-
-// function scrollPrev(){
-//     if (currentPosition > 0){
-//         currentPosition -= gridWidth;
-//         latestItem.style.transform = `translateX(-${currentPosition}px)`;
-//     }
-// }
-// prvBtn.addEventListener('click', scrollPrev);
-
-
-//nextBtn.addEventListener('click', scrollNext);

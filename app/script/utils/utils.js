@@ -1,3 +1,4 @@
+// GYV3 AIzaSyAolfku7P6ZM-eeNv-5I0o6AvqMAUCkEaQ
 import { config } from "../../../config/config.js";
 
 export const imageBaseUrl = 'https://image.tmdb.org/t/p/w500'

@@ -1,5 +1,5 @@
 
-import { imageBaseUrl, getGenre, truncateText } from "./utils/utils.js";
+import { imageBaseUrl, getGenre, truncateText, redirectToDetailsPage } from "./utils/utils.js";
 import { config } from "../../config/config.js";
 
 
@@ -76,10 +76,19 @@ async function getData(){
                 const genreData = dataValues[2][1];
                 const posterImg = dataValues[8];
 
+                const overview = dataValues[6];
+                const id = dataValues[3];
+                const votesAvg = dataValues[12];
+                const totalVotes = dataValues[13]
+
                 const dataToObj = {
                     posterImg,
                     year,
                     movieTitle,
+                    overview,
+                    id,
+                    votesAvg,
+                    totalVotes,
                 };
                 viewAllMoviesUI(dataToObj, genreData);
                
@@ -91,11 +100,15 @@ async function getData(){
 getData()
 
 function viewAllMoviesUI(objUI, genre){
-    const {posterImg, year, movieTitle} = objUI;
+    const {posterImg, year, movieTitle, overview, id, votesAvg, totalVotes} = objUI;
 
     const cardPoster = document.createElement('a');
     cardPoster.setAttribute('class', 'card-poster');
-    cardPoster.setAttribute('href', '#')
+    cardPoster.setAttribute('href', '#');
+    cardPoster.addEventListener('click', (e)=>{
+        e.preventDefault();
+        redirectToDetailsPage(posterImg, movieTitle, year, genre, overview, id, votesAvg, totalVotes)
+    })
 
     const img = document.createElement('img');
     img.setAttribute('class', 'poster-img');
