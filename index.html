@@ -37,27 +37,23 @@
           <button class="menu-bar">
             <i class="fas fa-light fa-bars-staggered"></i>
           </button>
-          <h3 class="logo">Thriller</h3>
+          <a href="index.html"><h3 class="logo">Thriller</h3></a>
         </div>
 
         <div class="links">
           <ul class="row fa-center">
             <div class="movie-list">
-              <li><a class="nav-afer" href="#Movies">Movies</a></li>
+              <li><a class="nav-afer" href="#movies">Movies</a></li>
             </div>
             <li><a class="nav-link" href="#tv_show">TV Show</a></li>
             <li><a class="nav-link" href="#popular">Popular</a></li>
           </ul>
         </div>
-
-        <div class="search-wrapper">
           <button class="btn-search"><i class="fas fa-search"></i></button>
-          <input
-            class="movie-search-input"
-            type="search"
-            placeholder="Search"
-          />
-        </div>
+      </div>
+      <div class="search-wrapper">
+        <input class="input-search" type="search" name="w" id="" 
+       placeholder="Search Movie" spellcheck="false" aria-label="Search for all movie">
       </div>
     </nav>
     <div class="sidenav">
@@ -67,7 +63,7 @@
       <a href="">TV Shows</a>
       <a href="">Recommended</a>
     </div>
-    <main class="main" style="margin-top: 70px">
+    <main class="main" style="margin-top: 61px">
       <section class="hero-container">
         <div class="hero-wrapper">
           <div class="bg-skeleton"></div>
@@ -99,7 +95,7 @@
         </div>
       </section>
 
-      <section class="popular-movie-section">
+      <section id="popular" class="popular-movie-section">
         <div class="popular-container">
           <div class="popular-movie-row grid-items">
             <header class="popular-header">
@@ -143,20 +139,11 @@
         </div>
       </section>
 
-      <section class="latest-container">
+      <section id="movies" class="latest-container">
         <div class="latest-wrapper">
           <div class="latest-row">
             <div class="latest-movie-grid latest-item">
-              <!-- <div class="latest-col-1">
-                  <img src="./images/creed.jpg" alt="" width="200px">
-                  <div class="lat-col1-text">
-                    <div class="l-col1-text-row">
-                      <p class="latest-year">2022</p>
-                      <p class="latest-genre">Action</p>
-                    </div>
-                    <h3 class="latest-movie-name">Sunflower</h3>
-                  </div>
-              </div> -->
+             
             </div>
             <div class="latest-col-2">
               <header class="latest-header">
@@ -178,7 +165,7 @@
         </div>
       </section>
 
-      <section class="tv-series-container">
+      <section id="tv_show" class="tv-series-container">
         <div class="tv-series-wrapper">
         <div class="tv-series-row">
           <header class="tv-header">

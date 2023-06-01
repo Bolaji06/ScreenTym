@@ -25,9 +25,18 @@ const adultEl = document.querySelector('.adult');
 
 const avgVoteEl = document.querySelector('.vote-avg');
 const totalVotesEl = document.querySelector('.vote-count');
+const videoPlayerContainer = document.querySelector('.video-container');
 
-const idParam = new URLSearchParams(window.location.search);
-const idValue = idParam.get('id');
+
+
+const param = new URLSearchParams(window.location.search);
+const idValue = param.get('id');
+//const movieTitle = param.get('title');
+
+
+const youtube_key = config.YOUTUBE_KEY;
+const videoName = param.get('title');
+const youtubeURL = `https://www.googleapis.com/youtube/v3/search?key=${youtube_key}&part=snippet&q=${encodeURIComponent(videoName)}`;
 
 
 function openNav(){
@@ -181,3 +190,33 @@ function getMovieDetails(){
 
 }
 getMovieDetails();
+
+function setVideoPlayerFrame(videoId){
+    const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+    const videoFrame = document.createElement('iframe');
+    videoFrame.setAttribute('class', 'video-frame');
+    videoFrame.setAttribute('src', videoUrl);
+    videoFrame.width = '100%';
+    videoFrame.height = '390';
+    videoPlayerContainer.appendChild(videoFrame);
+}
+function getSelectedVideoFromAPI(){
+    try{
+        fetch(youtubeURL)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)
+                 console.log(data.items)
+                 const items = data.items[0].id;
+                 console.log(items.videoId)
+                 const videoId = items.videoId;
+                 setVideoPlayerFrame(videoId);
+                 
+            });
+
+    }
+    catch(e){
+        console.error(e.error);
+    }
+}
+getSelectedVideoFromAPI()

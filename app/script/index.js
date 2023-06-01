@@ -1,11 +1,10 @@
 
 const menuEl = document.querySelector('.menu-bar');
 const logo = document.querySelector('.logo');
-const serachWrapper = document.querySelector('.search-wrapper');
-const searchInput = document.querySelector('.movie-search-input');
 const closeEl = document.querySelector('.close-btn');
-//const logo = document.querySelector('.logo')
 const recommendSlider = document.querySelector('.item-list');
+const searchWrapper = document.querySelector('.search-wrapper');
+const btnSearch = document.querySelector('.btn-search');
 
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
@@ -14,6 +13,14 @@ const recGrid = document.querySelector('.rec-movie-grid');
 
 let isDown = false;
 let startX, scrollLeft;
+
+btnSearch.addEventListener('click', ()=>{
+    searchWrapper.classList.toggle('active');
+    console.log('toggle')
+});
+window.addEventListener('click', ()=>{
+    //searchWrapper.classList.remove('active');
+})
 
 function openNav(){
     sideNav.style.width = '300px';
@@ -37,11 +44,7 @@ document.body.addEventListener('click', ()=>{
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
-if (window.innerWidth <= 600){
-    searchInput.addEventListener('focus', ()=>{
-        logo.classList.add('remove-logo');
-    })
-}
+
 
 // The recommended sliderComponent movie list
 function sliderComponent(){

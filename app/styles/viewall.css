@@ -11,6 +11,9 @@ html{
 body{
    background-color: #131722;
 }
+a{
+  text-decoration: none;
+}
 main{
   height: 100%;
  
