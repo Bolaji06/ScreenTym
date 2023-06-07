@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="app/styles/main.css" />
+    <link rel="stylesheet" href="app/styles/search.css">
+</head>
+<body>
+    <nav class="primary-navigation">
+        <div class="navigation-container row fa-center">
+          <div class="nav-col-1 fa-center">
+            <button class="menu-bar">
+              <i class="fas fa-light fa-bars-staggered"></i>
+            </button>
+            <a href="index.html"><h3 class="logo">Thriller</h3></a>
+          </div>
+  
+          <div class="links">
+            <ul class="row fa-center">
+              <div class="movie-list">
+                <li><a class="nav-afer" href="#movies">Movies</a></li>
+              </div>
+              <li><a class="nav-link" href="#tv_show">TV Show</a></li>
+              <li><a class="nav-link" href="#popular">Popular</a></li>
+            </ul>
+          </div>
+            <button class="btn-search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-wrapper">
+          <input class="input-search" type="search" name="w" id="" 
+         placeholder="Search Movie" spellcheck="false" aria-label="Search for all movie">
+        </div>
+      </nav>
+      <div class="sidenav">
+        <button class="close-btn"><i class="fas fa-thin fa-xmark"></i></button>
+        <a href="">Movies</a>
+        <a href="">Popular</a>
+        <a href="">TV Shows</a>
+        <a href="">Recommended</a>
+      </div>
+      <main class="main" style="margin-top: 60px;">
+        <header>
+            <h1 class="result-text">Search Result: &OpenCurlyDoubleQuote;<span class="search-value"></span>&CloseCurlyDoubleQuote;</h1>
+        </header>
+
+        <section>
+            <div class="search-list-container">
+                <p class="no-search">No videos were found
+                    matching your selection
+                </p>
+
+                <div class="flx-card">
+                   
+                    
+                </div>
+            </div>
+        </section>
+      </main>
+      <script type="module" src="/app/script/search.js"></script>
+
+</body>
+</html>

@@ -36,6 +36,7 @@
    flex: 0 0 20%;
    max-width: 20%;
     text-decoration: none;
+    cursor: pointer;
 }
 .tv-details{
     color: rgb(114, 114, 114);

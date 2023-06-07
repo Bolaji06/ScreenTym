@@ -63,6 +63,11 @@ export function truncateText(text, maxLength, mediaQuery) {
     &title=${encodeURIComponent(title)} &year=${encodeURIComponent(year)}
     &genre=${encodeURIComponent(genre)} &overview=${encodeURIComponent(overview)} &id=${encodeURIComponent(id)}
     &vote_average=${encodeURIComponent(votesAvg)} &total_votes=${encodeURIComponent(totalVotes)}`;
-  
+  }
+
+  export function redirectToShowsDetails(image, title, year, genre, country, overview, id, votesAverage, totalVotes){
+    window.location.href = `movie.html?image=${encodeURIComponent(image)} &title=${encodeURIComponent(title)} &genre=${encodeURIComponent(genre)}
+    &year=${encodeURIComponent(year)} &country=${encodeURIComponent(country)} &overview=${encodeURIComponent(overview)}
+    &id=${encodeURIComponent(id)} &votes_average=${encodeURIComponent(votesAverage)} &total_votes=${encodeURIComponent(totalVotes)} `;
   }
   

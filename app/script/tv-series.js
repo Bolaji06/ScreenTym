@@ -1,8 +1,7 @@
 
 import { config } from "../../config/config.js";
-import { imageBaseUrl } from "./utils/utils.js";
-import { getGenre } from "./utils/utils.js";
-import { truncateText } from "./utils/utils.js";
+import { imageBaseUrl, redirectToShowsDetails, getGenre, truncateText } from "./utils/utils.js";
+
 
 const KEY = config.API_KEY;
 const url = `https://api.themoviedb.org/3/tv/popular?api_key=${KEY}&language=en-US&page=1`;
@@ -13,22 +12,25 @@ async function getDataForShows(){
              .then(data => {
                 
                 const results = data.results;
+                
                 results.forEach(item => {
                     const itemValues = Object.values(item) 
                     
-                    // const showImg = itemValues[10];
-                    // const showTitle = itemValues[4];
-                    // const showYear = itemValues[1].split('-')[0];
+                     const showImg = itemValues[10];
+                     const showTitle = itemValues[4];
+                     const showYear = itemValues[1].split('-')[0];
+                     const showCountry = itemValues[6];
+
                      const showGenre = itemValues[2][0];
 
-                    const objData = {
-                        showImg: itemValues[10],
-                        showTitle: itemValues[4],
-                        showYear: itemValues[1].split('-')[0],
-                        showCountry: itemValues[6],    
-                    }
+                    // const objData = {
+                    //     showImg: itemValues[10],
+                    //     showTitle: itemValues[4],
+                    //     showYear: itemValues[1].split('-')[0],
+                    //     showCountry: itemValues[6],    
+                    // }
                    
-                    tvShowsUI(objData, showGenre);
+                    tvShowsUI(showImg, showTitle, showYear, showCountry, showGenre);
                    
              });
                
@@ -36,11 +38,14 @@ async function getDataForShows(){
 }
 
 
-function tvShowsUI(objEl, genreId){
-    const { showImg, showYear, showTitle, showCountry } = objEl
+function tvShowsUI(showImg, showTitle, showYear, showCountry, genreId){
+    
     const tvCardLink = document.createElement('a');
     tvCardLink.setAttribute('class', 'tv-card');
-    tvCardLink.setAttribute('href', '#')
+    tvCardLink.addEventListener('click', (e) =>{
+        e.preventDefault();
+        redirectToShowsDetails(showImg, showTitle, showYear, showCountry, genreId)
+    })
 
     const showImgEl = document.createElement('img');
     showImgEl.setAttribute('class', 'img-tv');

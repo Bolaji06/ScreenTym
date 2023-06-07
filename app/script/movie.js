@@ -32,6 +32,7 @@ const videoPlayerContainer = document.querySelector('.video-container');
 const param = new URLSearchParams(window.location.search);
 const idValue = param.get('id');
 //const movieTitle = param.get('title');
+let player;
 
 
 const youtube_key = config.YOUTUBE_KEY;
@@ -79,10 +80,8 @@ async function getData(){
                 const results = response.results;
                 results.forEach(result => {
                     const resultsValue = Object.values(result);
-                    //console.log(resultsValue);
                     const alikeTitle = resultsValue[5];
                     const alikePosterImg = resultsValue[8];
-                    //console.log(alikePosterImg)
                     
                     const isAdult = resultsValue[0];
                     if (!isAdult) {
@@ -97,8 +96,6 @@ async function getData(){
                     const id = resultsValue[3];
                     const votesAvg = resultsValue[12];
                     const totalVotes = resultsValue[13];
-
-                    
 
                     movieAlikeUI(alikeTitle, alikePosterImg, alikeYear, alikeGenre, overview, id, votesAvg, totalVotes);
 
@@ -192,10 +189,14 @@ function getMovieDetails(){
 getMovieDetails();
 
 function setVideoPlayerFrame(videoId){
-    const videoUrl = `https://www.youtube.com/embed/${videoId}`;
+    let videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
     const videoFrame = document.createElement('iframe');
     videoFrame.setAttribute('class', 'video-frame');
+    videoFrame.setAttribute('id', 'frame-id'); //videoUrl += "?autoplay=1&mute=1";
     videoFrame.setAttribute('src', videoUrl);
+
+   
+    
     videoFrame.width = '100%';
     videoFrame.height = '390';
     videoPlayerContainer.appendChild(videoFrame);
@@ -206,7 +207,7 @@ function getSelectedVideoFromAPI(){
             .then(response => response.json())
             .then(data =>{
                 console.log(data)
-                 console.log(data.items)
+                 //console.log(data.items)
                  const items = data.items[0].id;
                  console.log(items.videoId)
                  const videoId = items.videoId;
@@ -216,7 +217,41 @@ function getSelectedVideoFromAPI(){
 
     }
     catch(e){
-        console.error(e.error);
+        console.error(e);
     }
 }
-getSelectedVideoFromAPI()
+//getSelectedVideoFromAPI();
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    
+});
+function playVideo(){
+    frameEl.src += "?autoplay=1&mute=1";
+}
+function pauseVideo(){
+    let src = frameEl.src;
+    frameEl.src += src.replace("?autoplay=1&mute=1", "")
+}
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+}
+function observeVideoPlayer(entries){
+    entries.forEach(entry =>{
+        
+        const isIntersecting = entry.isIntersecting;
+        if (isIntersecting){
+            // Play Video
+            playVideo();
+            console.log('Visible')
+        }
+        else{
+            //Pause Video
+            pauseVideo();
+            console.log('Not Visible');
+        }
+    });
+}
+const observer = new IntersectionObserver(observeVideoPlayer, options);
+//observer.observe(frameEl);

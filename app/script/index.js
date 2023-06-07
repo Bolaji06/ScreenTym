@@ -5,6 +5,7 @@ const closeEl = document.querySelector('.close-btn');
 const recommendSlider = document.querySelector('.item-list');
 const searchWrapper = document.querySelector('.search-wrapper');
 const btnSearch = document.querySelector('.btn-search');
+const inputSearchEl = document.querySelector('.input-search');
 
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
@@ -16,12 +17,18 @@ let startX, scrollLeft;
 
 btnSearch.addEventListener('click', ()=>{
     searchWrapper.classList.toggle('active');
-    console.log('toggle')
+    
 });
-window.addEventListener('click', ()=>{
-    //searchWrapper.classList.remove('active');
-})
 
+inputSearchEl.addEventListener('change', (e)=>{
+    console.log(e.target.value);
+    encodeSearchValue(inputSearchEl.value);
+
+});
+
+function encodeSearchValue(value){
+    window.location.href = `search.html?value=${encodeURIComponent(value)}`
+}
 function openNav(){
     sideNav.style.width = '300px';
     document.body.classList.add('overflow');
