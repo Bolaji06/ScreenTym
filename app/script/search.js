@@ -1,4 +1,4 @@
-import { imageBaseUrl, getGenre } from "./utils/utils.js";
+import { imageBaseUrl, getGenre, redirectToDetailsPage } from "./utils/utils.js";
 
 const menuEl = document.querySelector('.menu-bar');
 const logo = document.querySelector('.logo');
@@ -10,7 +10,7 @@ const btnSearch = document.querySelector('.btn-search');
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
 const genreEl = document.querySelector('.genre');
-console.log(genreEl)
+const noResultsEl = document.querySelector('.no-search');
 
 const searchListCard = document.querySelector('.flx-card');
 
@@ -56,24 +56,35 @@ function generateSearchResult(){
           fetch(`https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`, options)
             .then(response => response.json())
             .then(response => {
-                const results = response.results;
+                const results = response.results; 
+                if (results === null){
+                        noResultsEl.style.display = block;
+                    }
                 results.forEach(result =>{
-                    console.log(result)
+                    //console.log(result)
+                   
                     const objValues = Object.values(result);
-                    //console.log(objValues);
                     const title = objValues[3];
                     const poster = objValues[7];
                     let type = objValues[8];
-                    const genre = objValues[9][0] || "";
                     const year = objValues[11].split("-")[0] || "";
-                    const votes = objValues[14];
+                    let votes = objValues[14];
 
+                    load(poster, title, year)
+
+                    
+                        const postersEl = document.querySelectorAll('.item-poster');
+                        postersEl.forEach(posterEl => {
+                           //if (poster === null){posterEl.src = "/images/Thriller.jpg";} 
+                           
+                        })
+                        
                     if (type === "tv"){
                         type = type.toUpperCase();
+                        votes = objValues[13];
                     }
-                    const genreTxt = getGenre(genre, genreEl); 
-
-                    searchListUI(poster, title, type, genreTxt, year, votes);
+                    
+                    searchListUI(poster, title, type, year, votes);
                 })
                 
             })
@@ -87,8 +98,7 @@ function generateSearchResult(){
 }
 generateSearchResult();
 
-function searchListUI(poster, title, type, genre, year, votes){
-    return (
+function searchListUI(poster, title, type, year, votes){
         searchListCard.innerHTML += `
         <div class="list-card-wrapper">
         <div class="list-card row-card">
@@ -97,17 +107,30 @@ function searchListUI(poster, title, type, genre, year, votes){
                 <p class="item-name">${title}</p>
                 <div class="item-sub-details row-card">
                     <p class="type">${type}</p>
-                    <p class="genre">${genre}</p>
                     <p class="year">${year}</p>
                 </div>
                 <div class="rating row-card">
                     <span class="star"><i class="fa-solid fa-star"></i></span>
-                    <p class="votes-count">${votes}</p>
+                    <p class="votes-count">${votes} Votes</p>
                 </div>
             </div>
         </div>
     </div>
         `
-    );
+    function doSomething(){
+        console.log("Click");
+    }
 }
-//searchListUI()
+function load(poster, title, year){
+    document.addEventListener("DOMContentLoaded", ()=>{
+        const itemDetails = document.querySelector('.list-card');
+        itemDetails.addEventListener('click', ()=>{
+            redirectToDetailsPage(poster, title, year);
+        })
+    })
+}
+document.addEventListener("DOMContentLoaded", ()=>{
+    const list = document.querySelectorAll("type");
+    console.log(list)
+   
+})

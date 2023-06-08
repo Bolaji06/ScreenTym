@@ -19,12 +19,16 @@ header{
 }
 .list-card-wrapper{
     width: 100%;
-    border-top: 1px solid rgb(200, 200, 200);
-    borde-bottom: 1px solid rgb(201, 201, 201);
+    borer-top: 1px solid rgb(200, 200, 200);
     margin: auto;
     background-color: aliceblue;
-    padding: 10px;
-    
+    padding: 10px;   
+    cursor: pointer;
+}
+@media (max-width: 799px){
+    .list-card-wrapper:nth-child(even){
+        background-color: rgb(210, 210, 210);
+    }
 }
 .list-card-wrapper:last-child{
     border-bottom: none;
@@ -64,5 +68,10 @@ header{
     }
     .list-card-wrapper{
        
+    }
+}
+@media (min-width: 1100px){
+    .flx-card{
+        grid-template-columns: repeat(3, 1fr);
     }
 }
