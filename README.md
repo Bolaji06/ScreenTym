@@ -1,2 +1,2 @@
 # ScreenTym
-[Live](https://bolaji06.github.io/ScreenTym/)
+[Live](https://screen-tym.vercel.app/index.html)
