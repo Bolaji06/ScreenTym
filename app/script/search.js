@@ -11,7 +11,6 @@ const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
 const genreEl = document.querySelector('.genre');
 const noResultsEl = document.querySelector('.no-result-container');
-console.log(noResultsEl)
 
 const searchListCard = document.querySelector('.flx-card');
 

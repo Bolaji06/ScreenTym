@@ -16,7 +16,7 @@ async function getDataForShows(){
                 results.forEach(item => {
                     const itemValues = Object.values(item) 
 
-                    console.log(itemValues);
+                    //console.log(itemValues);
                     
                      const showImg = itemValues[10];
                      const showTitle = itemValues[4];

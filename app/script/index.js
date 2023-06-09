@@ -20,11 +20,19 @@ btnSearch.addEventListener('click', ()=>{
     
 });
 
-inputSearchEl.addEventListener('change', (e)=>{
-    console.log(e.target.value);
-    encodeSearchValue(inputSearchEl.value);
+// inputSearchEl.addEventListener('change', (e)=>{
+    
+//    // encodeSearchValue(inputSearchEl.value);
 
-});
+// });
+document.addEventListener("keydown", (e)=>{
+    if (e.key === "Enter"){
+        inputSearchEl.addEventListener("change", ()=>{
+            encodeSearchValue(inputSearchEl.value);
+        });
+    }
+    
+})
 
 function encodeSearchValue(value){
     window.location.href = `search.html?value=${encodeURIComponent(value)}`
