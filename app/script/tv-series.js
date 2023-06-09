@@ -15,6 +15,8 @@ async function getDataForShows(){
                 
                 results.forEach(item => {
                     const itemValues = Object.values(item) 
+
+                    console.log(itemValues);
                     
                      const showImg = itemValues[10];
                      const showTitle = itemValues[4];
@@ -22,6 +24,13 @@ async function getDataForShows(){
                      const showCountry = itemValues[6];
 
                      const showGenre = itemValues[2][0];
+                     let overview = itemValues[8];
+                     if (overview === ""){
+                        overview = `There's no overview for ${showTitle}`;
+                     }
+                     const totalVotes = itemValues[12];
+                     const avgVotes = itemValues[11];
+                     const id = itemValues[3];
 
                     // const objData = {
                     //     showImg: itemValues[10],
@@ -30,7 +39,7 @@ async function getDataForShows(){
                     //     showCountry: itemValues[6],    
                     // }
                    
-                    tvShowsUI(showImg, showTitle, showYear, showCountry, showGenre);
+                    tvShowsUI(showImg, showTitle, showYear, showCountry, showGenre, overview, id, avgVotes, totalVotes);
                    
              });
                
@@ -38,13 +47,13 @@ async function getDataForShows(){
 }
 
 
-function tvShowsUI(showImg, showTitle, showYear, showCountry, genreId){
+function tvShowsUI(showImg, showTitle, showYear, showCountry, genreId, overview, id, votesAvg, totalVotes){
     
     const tvCardLink = document.createElement('a');
     tvCardLink.setAttribute('class', 'tv-card');
     tvCardLink.addEventListener('click', (e) =>{
         e.preventDefault();
-        redirectToShowsDetails(showImg, showTitle, showYear, showCountry, genreId)
+        redirectToShowsDetails(showImg, showTitle, showYear, genreId, showCountry, overview, id, votesAvg, totalVotes)
     })
 
     const showImgEl = document.createElement('img');

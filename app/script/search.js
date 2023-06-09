@@ -10,7 +10,8 @@ const btnSearch = document.querySelector('.btn-search');
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
 const genreEl = document.querySelector('.genre');
-const noResultsEl = document.querySelector('.no-search');
+const noResultsEl = document.querySelector('.no-result-container');
+console.log(noResultsEl)
 
 const searchListCard = document.querySelector('.flx-card');
 
@@ -43,6 +44,10 @@ document.body.addEventListener('click', ()=>{
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
+function doSomething(){
+    console.log("Click")
+}
+
 function generateSearchResult(){
     try{
         const options = {
@@ -56,12 +61,15 @@ function generateSearchResult(){
           fetch(`https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`, options)
             .then(response => response.json())
             .then(response => {
+                
                 const results = response.results; 
-                if (results === null){
-                        noResultsEl.style.display = block;
+                
+                if (results.length === 0){
+                        noResultsEl.classList.add("active");
+                        document.body.style.overflow = "hidden"
                     }
                 results.forEach(result =>{
-                    //console.log(result)
+                    
                    
                     const objValues = Object.values(result);
                     const title = objValues[3];
@@ -69,28 +77,24 @@ function generateSearchResult(){
                     let type = objValues[8];
                     const year = objValues[11].split("-")[0] || "";
                     let votes = objValues[14];
+                    const overview = objValues[6];
+                    let id = objValues[2];
+                    const genre = objValues[9][0];
+                    const votesAvg = objValues[13];
+                   
 
-                    load(poster, title, year)
-
-                    
-                        const postersEl = document.querySelectorAll('.item-poster');
-                        postersEl.forEach(posterEl => {
-                           //if (poster === null){posterEl.src = "/images/Thriller.jpg";} 
-                           
-                        })
-                        
                     if (type === "tv"){
                         type = type.toUpperCase();
                         votes = objValues[13];
+                        
                     }
                     
-                    searchListUI(poster, title, type, year, votes);
-                })
+                   searchListUI(poster, title, type,  year, votes, id, overview, genre, votesAvg, votes);
+                        
+                });
                 
             })
             .catch(err => console.error(err));
-
-
     }
     catch(e){
         console.error(e.error);
@@ -98,39 +102,99 @@ function generateSearchResult(){
 }
 generateSearchResult();
 
-function searchListUI(poster, title, type, year, votes){
-        searchListCard.innerHTML += `
-        <div class="list-card-wrapper">
-        <div class="list-card row-card">
-            <img class="item-poster" src="${imageBaseUrl}${poster}" alt="Search Item Image" srcset="">
-            <div class="item-details">
-                <p class="item-name">${title}</p>
-                <div class="item-sub-details row-card">
-                    <p class="type">${type}</p>
-                    <p class="year">${year}</p>
-                </div>
-                <div class="rating row-card">
-                    <span class="star"><i class="fa-solid fa-star"></i></span>
-                    <p class="votes-count">${votes} Votes</p>
-                </div>
-            </div>
-        </div>
-    </div>
-        `
-    function doSomething(){
-        console.log("Click");
-    }
-}
-function load(poster, title, year){
-    document.addEventListener("DOMContentLoaded", ()=>{
-        const itemDetails = document.querySelector('.list-card');
-        itemDetails.addEventListener('click', ()=>{
-            redirectToDetailsPage(poster, title, year);
+
+
+//document.addEventListener("DOMContentLoaded", searchListUI)
+function searchListUI(poster, title, type, year, votes, id, overview, genre, votesAvg, totalVotes){
+    //document.addEventListener("DOMContentLoaded", ()=>{
+        const listCardWrapper = document.createElement("div");
+        listCardWrapper.setAttribute("class", "list-card-wrapper");
+
+        const listCard = document.createElement("div");
+        listCard.setAttribute("class", "list-card");
+        listCard.setAttribute("class", "row-card");
+
+
+        let posterImg = document.createElement("img");
+        posterImg.setAttribute("class", "item-poster");
+        posterImg.src = `${imageBaseUrl}${poster}`
+
+        if (poster === null){
+             poster = "/images/Thriller.jpg";
+            posterImg.src = poster;
+        }
+        
+        listCard.addEventListener("click", ()=>{
+            redirectToDetailsPage(poster, title, year, genre, overview, id,  votesAvg, totalVotes);
+            //encodeTypeURL(type);
         })
-    })
+
+        const itemDetails = document.createElement("div");
+        itemDetails.setAttribute("class", "item-details");
+
+        const itemName = document.createElement("p");
+        itemName.setAttribute("class", "item-name");
+        itemName.textContent = title;
+
+        const itemSubDetails = document.createElement("div");
+        itemSubDetails.setAttribute("class", "item-sub-details");
+        itemSubDetails.setAttribute("class", "row-card");
+
+        const typeEl = document.createElement("p");
+        typeEl.setAttribute("class", "type");
+        typeEl.textContent = type;
+
+        if (typeEl.textContent === "movie"){
+            typeEl.style.backgroundColor = "#79fc79ba";
+        }
+        
+
+        const yearEl = document.createElement("p");
+        yearEl.setAttribute("class", "year");
+        yearEl.textContent = year;
+
+        const ratingContainer = document.createElement("div");
+        ratingContainer.setAttribute("class", "rating");
+        ratingContainer.setAttribute("class", "row-card");
+
+        const spanStar = document.createElement("span");
+        spanStar.setAttribute("class", "star");
+        const awesomeStar = document.createElement("i");
+        awesomeStar.setAttribute("class", "fa-solid fa-star");
+        //awesomeStar.setAttribute("class", "fa-star");
+
+        const votesCount = document.createElement("p");
+        votesCount.setAttribute("class", "votes-count");
+        votesCount.textContent = votes + " Votes"
+
+        if (votes <= 1){
+            votesCount.textContent = votes + ' Vote';
+        }
+
+        spanStar.appendChild(awesomeStar);
+        ratingContainer.appendChild(spanStar);
+        ratingContainer.appendChild(votesCount);
+
+        itemSubDetails.appendChild(typeEl);
+        itemSubDetails.appendChild(yearEl);
+
+        itemDetails.appendChild(itemName);
+        itemDetails.appendChild(itemSubDetails);
+        itemDetails.appendChild(ratingContainer);
+
+        listCard.appendChild(posterImg);
+        listCard.appendChild(itemDetails);
+
+        listCardWrapper.appendChild(listCard);
+
+        searchListCard.appendChild(listCardWrapper);
+     
 }
-document.addEventListener("DOMContentLoaded", ()=>{
-    const list = document.querySelectorAll("type");
-    console.log(list)
+function encodeTypeURL(type){
+    if (type = "tv"){
+        window.location.href += `movie.html?type=${encodeURIComponent(type)}`
+    }
    
-})
+}
+ 
+

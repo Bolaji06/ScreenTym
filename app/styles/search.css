@@ -11,15 +11,33 @@ header{
     margin-top: 0px;
     padding: 0px;
 }
-.no-search{
+.no-result-container{
     display: none;
+}
+.no-result-container.active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-weight: 400;
+    padding-top: 50px;
+}
+.no-result-img{
+    width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.no-search{
+    font-size: 2.5rem;
+    font-weight: 500;
 }
 .search-value{
     text-transform: capitalize;
 }
 .list-card-wrapper{
     width: 100%;
-    borer-top: 1px solid rgb(200, 200, 200);
     margin: auto;
     background-color: aliceblue;
     padding: 10px;   
@@ -44,7 +62,7 @@ header{
     gap: 10px;
 }
 .item-sub-details{
-    font-size: .9rem;
+    font-size: .8rem;
     margin-top: 4px;
 }
 .star{
@@ -56,9 +74,18 @@ header{
     font-size: .7rem;
     margin-top: 7px;
 }
+.type{
+    border-radius: 10px;
+    padding: 1px 6px;
+    background-color: #ff8bc1ba;
+    
+}
 .type,
-.genre{
+.genre,
+.year{
     text-transform: capitalize;
+    margin-top: 2px;
+    font-size: .8rem;
 }
 @media(min-width: 800px){
     .flx-card{

@@ -28,6 +28,8 @@ iframe{
 }
 .movie-s-title{
     color: white;
+    max-width: 500px;
+    padding-right: 10px;
 }
 .movie-row{
     margin-top: 8px;

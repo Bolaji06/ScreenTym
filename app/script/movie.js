@@ -11,11 +11,9 @@ const closeEl = document.querySelector('.close-btn');
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('main');
 
-
-
 const alikeMovieContainer = document.querySelector('.alike-movie-row');
 const movieDesc = document.querySelector('.movie-desc');
-
+const hCol2 = document.querySelector(".h-col2");
 const movieTitleEl = document.querySelector('.movie-s-title');
 const yearMovieEl = document.querySelector('.year');
 const genreMovieEl = document.querySelector('.genre');
@@ -57,12 +55,20 @@ document.body.addEventListener('click', ()=>{
         sideNav.style.width = '0';
         document.body.classList.remove('overflow');
     }
-})
+});
 
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
+if (alikeMovieContainer.hasChildNodes()){
+    hCol2.style.display = "block";
+    console.log("This element has node", alikeMovieContainer.childNodes)
+}
+else {
+    hCol2.textContent = ""
+}
 //1094319
+
 
 async function getData(){
     try{
@@ -189,16 +195,15 @@ function getMovieDetails(){
 getMovieDetails();
 
 function setVideoPlayerFrame(videoId){
-    let videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
+    let videoUrl = `https://www.youtube.com/embed/${videoId}`;
     const videoFrame = document.createElement('iframe');
     videoFrame.setAttribute('class', 'video-frame');
     videoFrame.setAttribute('id', 'frame-id'); //videoUrl += "?autoplay=1&mute=1";
     videoFrame.setAttribute('src', videoUrl);
 
-   
-    
     videoFrame.width = '100%';
     videoFrame.height = '390';
+
     videoPlayerContainer.appendChild(videoFrame);
 }
 function getSelectedVideoFromAPI(){
@@ -206,10 +211,7 @@ function getSelectedVideoFromAPI(){
         fetch(youtubeURL)
             .then(response => response.json())
             .then(data =>{
-                console.log(data)
-                 //console.log(data.items)
                  const items = data.items[0].id;
-                 console.log(items.videoId)
                  const videoId = items.videoId;
                  setVideoPlayerFrame(videoId);
                  
@@ -220,38 +222,4 @@ function getSelectedVideoFromAPI(){
         console.error(e);
     }
 }
-//getSelectedVideoFromAPI();
-
-document.addEventListener("DOMContentLoaded", ()=>{
-    
-});
-function playVideo(){
-    frameEl.src += "?autoplay=1&mute=1";
-}
-function pauseVideo(){
-    let src = frameEl.src;
-    frameEl.src += src.replace("?autoplay=1&mute=1", "")
-}
-const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1,
-}
-function observeVideoPlayer(entries){
-    entries.forEach(entry =>{
-        
-        const isIntersecting = entry.isIntersecting;
-        if (isIntersecting){
-            // Play Video
-            playVideo();
-            console.log('Visible')
-        }
-        else{
-            //Pause Video
-            pauseVideo();
-            console.log('Not Visible');
-        }
-    });
-}
-const observer = new IntersectionObserver(observeVideoPlayer, options);
-//observer.observe(frameEl);
+getSelectedVideoFromAPI();
