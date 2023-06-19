@@ -235,6 +235,12 @@ ul li a:hover {
     background-color: rgba(255, 255, 255, 0.5);
     opacity: .1;
   }
+  .item.active{
+      border-style: solid;
+      border-width: 3px;
+      border-image: linear-gradient(20deg, rgb(237, 237, 237), rgb(66, 103, 250)) 1;
+  }
+  
  
 @keyframes pulse {
  100% {
@@ -328,6 +334,8 @@ ul li a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .rec-movie-grid div img {
   width: 180px;
@@ -388,12 +396,6 @@ ul li a:hover {
   .item-list.active {
     cursor: pointer;
     transform: scale(1.05);
-  }
-  .popular-col-1 {
-    /* flex: 0 0 40%;
-        max-width: 40%;
-        align-self: center;
-        margin-bottom: 0; */
   }
 }
 @media (max-width: 820px) {
@@ -481,4 +483,17 @@ ul li a:hover {
   .item-list {
     width: 330px;
   }
+}
+footer{
+  position: relative;
+  bottom: 0;
+  margin-top: 0px;
+  margin-bottom: 0;
+  background-color: #131722;
+  padding: 40px 0;
+  text-align: center;
+}
+footer p{
+  text-align: center;
+   color: white;
 }

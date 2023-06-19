@@ -43,7 +43,7 @@
   padding: 10px 0;
 }
 .action-viewall {
-  font-size: var(--fs_9);
+  font-size: var(--fs_1);
   text-transform: uppercase;
   color: var(--gray-1);
   text-decoration: none;
@@ -54,6 +54,7 @@
 }
 .movie-thumbnail-wrapper {
   position: relative;
+  margin-top: 20px;
 }
 .action-viewall:hover {
   color: var(--white);

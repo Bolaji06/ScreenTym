@@ -17,6 +17,7 @@
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: auto;
     width: 80%;
+    margin-top: 20px;
     scrollbar-width: none;
     grid-gap: 10px;
     overflow-x: auto;
@@ -92,7 +93,7 @@
 .view-all{
     text-transform: uppercase;
     text-decoration: none;
-    font-size: .8rem;
+    font-size: 1rem;
     color: rgb(196, 193, 193);
 }
 .view-all:hover{
@@ -151,5 +152,10 @@
     .latest-container,
     .latest-wrapper{
         padding: 12px 5px;
+    }
+}
+@media(min-width: 700px){
+    .view-all{
+        font-size: 1rem;
     }
 }

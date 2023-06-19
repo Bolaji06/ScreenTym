@@ -35,7 +35,7 @@ let player;
 
 const youtube_key = config.YOUTUBE_KEY;
 const videoName = param.get('title');
-const youtubeURL = `https://www.googleapis.com/youtube/v3/search?key=${youtube_key}&part=snippet&q=${encodeURIComponent(videoName)}`;
+const youtubeURL = `https://www.googleapis.com/youtube/v3/search?key=${youtube_key}&part=snippet&q=${encodeURIComponent(videoName + " Trailer")}`;
 
 
 function openNav(){

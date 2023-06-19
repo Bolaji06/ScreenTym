@@ -1,6 +1,6 @@
 // https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=en-US
 import { config } from "../../config/config.js";
-import { imageBaseUrl } from "../script/utils/utils.js";
+import { imageBaseUrl, redirectToDetailsPage } from "../script/utils/utils.js";
 import { getGenre } from "../script/utils/utils.js";
 import { truncateText } from "../script/utils/utils.js";
 
@@ -67,56 +67,67 @@ async function getLatestMovies() {
           const values = Object.values(element);
           //console.log(values);
 
+          const movieTitle = values[5];
+          const genre = values[2][0];
+          const imgValue = values[8];
+          const overview = values[6];
+          const id = values[3];
+          const votesAvg = values[12];
+          const totalVotes = values[13];
           const year = values[9].split('-')[0].concat(',');
 
-          function latestUI() {
-            const latestCol1 = document.createElement("a");
-            latestCol1.setAttribute("class", "latest-col-1");
-            latestCol1.setAttribute('href', '#');
-
-            const latestPosterImg = document.createElement("img");
-            latestPosterImg.setAttribute("class", "latest-poster");
-            latestPosterImg.src = `${imageBaseUrl}${values[8]}`;
-
-            const latCol1Text = document.createElement("div");
-            latCol1Text.setAttribute("class", "lat-col1-text");
-
-            const latCol1TextRow = document.createElement("div");
-            latCol1TextRow.setAttribute("class", "l-col1-text-row");
-
-            const latestYear = document.createElement("p");
-            latestYear.setAttribute("class", "latest-year");
-            latestYear.textContent = year;
-
-            const latestGenre = document.createElement("p");
-            latestGenre.setAttribute("class", "latest-genre");
-            getGenre(values[2][0], latestGenre);
-            //truncateText(latestGenre);
-            
-
-            const latestMovieName = document.createElement("h3");
-            latestMovieName.setAttribute("class", "latest-movie-name");
-            latestMovieName.textContent = values[10];
-            truncateText(latestMovieName, 12, 700);
-            truncateText(latestMovieName, 20, 1200);
-
-
-            latestCol1.appendChild(latestPosterImg);
-            latestCol1.appendChild(latCol1Text);
-
-            latestGrid.appendChild(latestCol1);
-
-            latCol1TextRow.appendChild(latestYear);
-            latCol1TextRow.appendChild(latestGenre);
-            latCol1Text.appendChild(latCol1TextRow);
-            latCol1Text.appendChild(latestMovieName);
-          }
-          latestUI();
+          latestUI(movieTitle, genre, year, imgValue, overview, id, votesAvg, totalVotes);
         });
       });
   } catch (error) {
     console.error(error);
   }
+}
+function latestUI(movieTitle, genre, year, imgValue, overview, id, votesAvg, totalVotes) {
+  const latestCol1 = document.createElement("a");
+  latestCol1.setAttribute("class", "latest-col-1");
+  latestCol1.setAttribute('href', '#');
+  latestCol1.addEventListener("click", (e)=>{
+    e.preventDefault();
+    redirectToDetailsPage(imgValue, movieTitle, year, genre, overview, id, votesAvg, totalVotes)
+  })
+
+  const latestPosterImg = document.createElement("img");
+  latestPosterImg.setAttribute("class", "latest-poster");
+  latestPosterImg.src = `${imageBaseUrl}${imgValue}`;
+
+  const latCol1Text = document.createElement("div");
+  latCol1Text.setAttribute("class", "lat-col1-text");
+
+  const latCol1TextRow = document.createElement("div");
+  latCol1TextRow.setAttribute("class", "l-col1-text-row");
+
+  const latestYear = document.createElement("p");
+  latestYear.setAttribute("class", "latest-year");
+  latestYear.textContent = year;
+
+  const latestGenre = document.createElement("p");
+  latestGenre.setAttribute("class", "latest-genre");
+  getGenre(genre, latestGenre);
+  //truncateText(latestGenre);
+  
+
+  const latestMovieName = document.createElement("h3");
+  latestMovieName.setAttribute("class", "latest-movie-name");
+  latestMovieName.textContent = movieTitle;
+  truncateText(latestMovieName, 12, 700);
+  truncateText(latestMovieName, 20, 1200);
+
+
+  latestCol1.appendChild(latestPosterImg);
+  latestCol1.appendChild(latCol1Text);
+
+  latestGrid.appendChild(latestCol1);
+
+  latCol1TextRow.appendChild(latestYear);
+  latCol1TextRow.appendChild(latestGenre);
+  latCol1Text.appendChild(latCol1TextRow);
+  latCol1Text.appendChild(latestMovieName);
 }
 
 

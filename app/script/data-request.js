@@ -1,4 +1,4 @@
-import { getGenre, imageBaseUrl } from "./utils/utils.js";
+import { getGenre, imageBaseUrl, redirectToDetailsPage } from "./utils/utils.js";
 import { config } from "../../config/config.js";
 
 const API_KEY = config.API_KEY;
@@ -9,11 +9,12 @@ const movieTitle = document.querySelector(".movie-title");
 const movieDate = document.querySelector(".rec-details-year");
 const movieGenreTxt = document.querySelector(".rec-details-genre");
 const moviePopularity = document.querySelector(".popularity");
-//const gridItems = document.querySelectorAll('.item');
+const btnWatch = document.querySelector(".btn-rec");
 const skeleton = document.querySelector('.bg-skeleton')
 
 const movieGridContainer = document.querySelector(".rec-movie-grid");
 const recMovieTitle = document.querySelector(".movie-title");
+let itemClicked = null;
 
 async function fetchData() {
   try {
@@ -67,6 +68,7 @@ async function fetchData() {
         movieGenreText,
         movieYear
       );
+      
     });
   } catch (e) {
     console.error(e.error);
@@ -102,15 +104,59 @@ function updateUIOnClick(
   imgEl.setAttribute("class", "item");
   imgEl.src = `https://image.tmdb.org/t/p/w200${imgValue}`;
   movieGridContainer.appendChild(imgEl);
+  
+  // imgEl.forEach(item=>{
+  //   //item[1].classList.add("active");
+  // })
 
-  imgEl.addEventListener("click", () => {
-    const movieGenre = genre;
-   getGenre(movieGenre, movieGenreTxt);
+  imgEl.addEventListener("click", (event) => {
+  
+
+   getGenre(genre, movieGenreTxt);
 
     movieDate.textContent = movieYearValue;
     recMovieTitle.textContent = movieTitleValue;
     moviePopularity.textContent = moviePopValue;
     heroBackDrop.src = `${imageBaseUrl}${imgValue}`;
+
+    handleBorderClick(event);
+  });
+  
+}
+function handleBorderClick (event) {
+    const imgItems = document.querySelectorAll(".item");
+      imgItems.forEach(item =>{
+        item.classList.remove("active");
+    });
+    event.target.classList.add("active")
+}
+
+fetchData();
+let lastClickedItem = null;
+let title = null;
+let year = null;
+let genre = null;
+let totalVotes = null;
+
+
+function watchRecMovie(){
+
+    movieGridContainer.addEventListener("click", (e) =>{
+    const clickedItem = e.target;
+    lastClickedItem = clickedItem.src
+    title = recMovieTitle.innerText;
+    year = movieDate.innerText;
+    genre = movieGenreTxt.innerText
+    totalVotes = moviePopularity.innerText;
+
+    
+    
+  });
+  btnWatch.addEventListener("click", ()=>{
+    //redirectToDetailsPage(lastClickedItem, title, year, genre, null, null, null, totalVotes)
+      //console.log(lastClickedItem, title, year, genre)
   });
 }
-fetchData();
+watchRecMovie();
+
+

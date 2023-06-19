@@ -7,6 +7,7 @@ const searchWrapper = document.querySelector('.search-wrapper');
 const btnSearch = document.querySelector('.btn-search');
 const inputSearchEl = document.querySelector('.input-search');
 
+
 const sideNav = document.querySelector('.sidenav');
 const main = document.querySelector('.main');
 
@@ -25,16 +26,20 @@ btnSearch.addEventListener('click', ()=>{
 //    // encodeSearchValue(inputSearchEl.value);
 
 // });
-document.addEventListener("keydown", (e)=>{
+
+    document.addEventListener("keydown", (e)=>{
     if (e.key === "Enter"){
         inputSearchEl.addEventListener("change", ()=>{
-            encodeSearchValue(inputSearchEl.value);
+            const searchParam = inputSearchEl.value.trim();
+            encodeSearchValue(searchParam);
+            console.log("Move...")
         });
     }
-    
+
 })
 
 function encodeSearchValue(value){
+    console.log("Moving to Search...")
     window.location.href = `search.html?value=${encodeURIComponent(value)}`
 }
 function openNav(){
