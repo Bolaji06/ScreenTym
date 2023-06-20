@@ -238,7 +238,7 @@ ul li a:hover {
   .item.active{
       border-style: solid;
       border-width: 3px;
-      border-image: linear-gradient(20deg, rgb(237, 237, 237), rgb(66, 103, 250)) 1;
+      border-image: linear-gradient(20deg, rgb(243, 243, 243), rgb(66, 103, 250)) 1;
   }
   
  
