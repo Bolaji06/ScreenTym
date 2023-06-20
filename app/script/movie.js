@@ -77,7 +77,7 @@ async function getData(){
             .then(response => response.json())
             .then(data =>{
                 const results = data.results;
-                console.log(results);
+                //console.log(results);
                 if (results === undefined || results.length === 0){
                     hCol2.textContent = "There's no similar movie";
                     //movieCol1.style.backgroundColor = "#1c212e";

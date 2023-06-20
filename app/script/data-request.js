@@ -14,17 +14,17 @@ const skeleton = document.querySelector('.bg-skeleton')
 
 const movieGridContainer = document.querySelector(".rec-movie-grid");
 const recMovieTitle = document.querySelector(".movie-title");
-let itemClicked = null;
+const fetchURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+let lastClickedItem = null
 
 async function fetchData() {
   try {
-    const response = await fetch(`
-        https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
+    const response = await fetch(fetchURL);
 
     if (response.ok){
-      skeleton.style.display = 'none';
-      
+      skeleton.style.display = 'none'; 
     }
+
     else {
       throw new Error('Error fetching data')
     }
@@ -36,6 +36,7 @@ async function fetchData() {
     
     const updateInitial = firstNine[0];
     const getValue = Object.values(updateInitial);
+   
 
     const heroBackDropData = getValue[1];
     const movieTitleData = getValue[5];
@@ -54,20 +55,22 @@ async function fetchData() {
     firstNine.forEach((movie) => {
       //Data retrieve for each element
       const objList = Object.values(movie); // Get all data object values : return array
+      console.log(objList)
 
-      const heroImg = objList[1];
-      const recMovieName = objList[5];
-      const moviePopText = objList[7].toFixed();
-      const movieGenreText = objList[2][0];
-      const movieYear = objList[9].split("-")[0];
+      const movieDetails = {
+        movieImg: objList[1],
+        title: objList[5],
+        totalVotes: objList[7].toFixed(),
+        genre: objList[2][0],
+        year: objList[9].split("-")[0],
+        id: objList[3],
+        overview: objList[6],
+        avgVotes: objList[12],
+        posterImg: objList[8],
+      }
+      //console.log(movieDetails.heroImg)
 
-      updateUIOnClick(
-        recMovieName,
-        moviePopText,
-        heroImg,
-        movieGenreText,
-        movieYear
-      );
+      updateUIOnClick(movieDetails);
       
     });
   } catch (e) {
@@ -93,16 +96,14 @@ function updateUIOnLoad(
 }
 
 // Update UI when item is clicked in the recommended slider
-function updateUIOnClick(
-  movieTitleValue,
-  moviePopValue,
-  imgValue,
-  genre,
-  movieYearValue
-  ) {
+function updateUIOnClick(movieDetails) {
+
+    const {movieImg, title, year, genre, totalVotes,
+       id, overview, avgVotes, posterImg} = movieDetails
+
   const imgEl = document.createElement("img");
   imgEl.setAttribute("class", "item");
-  imgEl.src = `https://image.tmdb.org/t/p/w200${imgValue}`;
+  imgEl.src = `https://image.tmdb.org/t/p/w200${movieImg}`;
   movieGridContainer.appendChild(imgEl);
   
   // imgEl.forEach(item=>{
@@ -114,15 +115,39 @@ function updateUIOnClick(
 
    getGenre(genre, movieGenreTxt);
 
-    movieDate.textContent = movieYearValue;
-    recMovieTitle.textContent = movieTitleValue;
-    moviePopularity.textContent = moviePopValue;
-    heroBackDrop.src = `${imageBaseUrl}${imgValue}`;
+    movieDate.textContent = year;
+    recMovieTitle.textContent = title;
+    moviePopularity.textContent = totalVotes;
+    heroBackDrop.src = `${imageBaseUrl}${movieImg}`;
 
     handleBorderClick(event);
+
+    lastClickedItem = {
+      year,
+      totalVotes,
+      posterImg,
+      genre,
+      title,
+      id,
+      overview,
+      avgVotes,
+    }
+
   });
   
 }
+btnWatch.addEventListener("click", ()=> {
+  if (lastClickedItem){
+    const {year, totalVotes, posterImg, genre, title,
+    id, overview, avgVotes} = lastClickedItem;
+
+  redirectToDetailsPage(posterImg, title, year,
+     genre, overview, id, avgVotes, totalVotes);
+  }
+});
+
+
+
 function handleBorderClick(event) {
     const imgItems = document.querySelectorAll(".item");
       imgItems.forEach(item =>{
@@ -132,29 +157,7 @@ function handleBorderClick(event) {
 }
 
 fetchData();
-let lastClickedItem = null;
-let title = null;
-let year = null;
-let genre = null;
-let totalVotes = null;
 
 
-function watchRecMovie(){
-
-  movieGridContainer.addEventListener("click", (e) =>{
-  const clickedItem = e.target;
-  lastClickedItem = clickedItem.src
-  title = recMovieTitle.innerText;
-  year = movieDate.innerText;
-  genre = movieGenreTxt.innerText
-  totalVotes = moviePopularity.innerText;  
-  });
-
-  btnWatch.addEventListener("click", ()=>{
-    //redirectToDetailsPage(lastClickedItem, title, year, genre, null, null, null, totalVotes)
-      console.log(lastClickedItem);
-  });
-}
-watchRecMovie();
 
 
