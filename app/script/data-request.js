@@ -123,7 +123,7 @@ function updateUIOnClick(
   });
   
 }
-function handleBorderClick (event) {
+function handleBorderClick(event) {
     const imgItems = document.querySelectorAll(".item");
       imgItems.forEach(item =>{
         item.classList.remove("active");
@@ -141,20 +141,18 @@ let totalVotes = null;
 
 function watchRecMovie(){
 
-    movieGridContainer.addEventListener("click", (e) =>{
-    const clickedItem = e.target;
-    lastClickedItem = clickedItem.src
-    title = recMovieTitle.innerText;
-    year = movieDate.innerText;
-    genre = movieGenreTxt.innerText
-    totalVotes = moviePopularity.innerText;
-
-    
-    
+  movieGridContainer.addEventListener("click", (e) =>{
+  const clickedItem = e.target;
+  lastClickedItem = clickedItem.src
+  title = recMovieTitle.innerText;
+  year = movieDate.innerText;
+  genre = movieGenreTxt.innerText
+  totalVotes = moviePopularity.innerText;  
   });
+
   btnWatch.addEventListener("click", ()=>{
     //redirectToDetailsPage(lastClickedItem, title, year, genre, null, null, null, totalVotes)
-      //console.log(lastClickedItem, title, year, genre)
+      console.log(lastClickedItem);
   });
 }
 watchRecMovie();
