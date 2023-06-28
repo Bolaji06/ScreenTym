@@ -135,9 +135,6 @@ footer{
     display: flex;
     flex-direction: column;
 }
-.movie-poster{
-   
-}
 .movie-desc-img{
     width: 250px;
 }

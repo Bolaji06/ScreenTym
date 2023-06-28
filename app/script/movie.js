@@ -17,6 +17,9 @@ const hCol2 = document.querySelector(".h-col2");
 const movieTitleEl = document.querySelector('.movie-s-title');
 const yearMovieEl = document.querySelector('.year');
 const genreMovieEl = document.querySelector('.genre');
+const movieCol1 = document.querySelector(".movie-col1");
+const movieCol2 = document.querySelector(".movie-col2");
+
 
 const moviePosterEl = document.querySelector('.movie-desc-img');
 const adultEl = document.querySelector('.adult');
@@ -60,16 +63,6 @@ document.body.addEventListener('click', ()=>{
 menuEl.addEventListener('click', openNav);
 closeEl.addEventListener('click', closeNav);
 
-if (alikeMovieContainer.hasChildNodes()){
-    hCol2.style.display = "block";
-    console.log("This element has node", alikeMovieContainer.childNodes)
-}
-else {
-    hCol2.textContent = ""
-}
-//1094319
-
-
 async function getData(){
     try{
         const options = {
@@ -82,10 +75,17 @@ async function getData(){
           
           fetch(`https://api.themoviedb.org/3/movie/${idValue}/similar?language=en-US&page=1`, options)
             .then(response => response.json())
-            .then(response =>{
-                const results = response.results;
+            .then(data =>{
+                const results = data.results;
+                //console.log(results);
+                if (results === undefined || results.length === 0){
+                    hCol2.textContent = "There's no similar movie";
+                    //movieCol1.style.backgroundColor = "#1c212e";
+                    //movieCol2.style.backgroundColor = "#1c212e";
+                }
                 results.forEach(result => {
                     const resultsValue = Object.values(result);
+                    //console.log(resultsValue)
                     const alikeTitle = resultsValue[5];
                     const alikePosterImg = resultsValue[8];
                     
