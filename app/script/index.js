@@ -6,6 +6,9 @@ const recommendSlider = document.querySelector('.item-list');
 const searchWrapper = document.querySelector('.search-wrapper');
 const btnSearch = document.querySelector('.btn-search');
 const inputSearchEl = document.querySelector('.input-search');
+const sideNavLinks = document.querySelectorAll(".side-link");
+
+console.log(sideNavLinks);
 
 
 const sideNav = document.querySelector('.sidenav');
@@ -46,12 +49,18 @@ function openNav(){
     sideNav.style.width = '300px';
     document.body.classList.add('overflow');
     sideNav.classList.add('overflow');
+    sideNavLinks.forEach(sideLink =>{
+        sideLink.classList.remove("close");
+    })
 }
 
 function closeNav(){
     sideNav.style.width = '0';
     main.style.marginLeft = '0';
     document.body.classList.remove('overflow');
+    sideNavLinks.forEach(sideLink =>{
+        sideLink.classList.add("close");
+    })
 }
 // Close the sideNav when body is clicked
 document.body.addEventListener('click', ()=>{

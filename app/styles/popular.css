@@ -216,3 +216,38 @@
     font-size: var(--fs_11);
   }
 }
+@media (min-width: 2540px){
+  .movie-thumbnail-wrapper{
+    margin-right: 10px;
+  }
+  .popular-details{
+    width: 450px;
+  }
+  .movie-thumbnail{
+    width: 450px;
+  }
+  .popular-movie-section{
+    padding: 150px 0;
+  }
+  .header-title{
+    font-size: 5rem;
+    padding-top: 8px;
+  }
+  .header-subtitle{
+    font-size: 3rem;
+    padding-bottom: 20px;
+  }
+  .action-viewall{
+    padding: 30px 0;
+    font-size: 2.5rem;
+  }
+  .action-viewall > span {
+    font-size: 3rem;
+  }
+  .d-col-1 p{
+    font-size: 2.8rem;
+  }
+  .pop-movie-title{
+    font-size: 2.6rem;
+  }
+}
